@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Que Arte Pastelería - Historia</title>
+        <link href="https://fonts.googleapis.com/css2?family=Rochester&family=Jacques+Francois&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <style>
+            body {
+                background-color: #ffffff;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+            header {
+                background-color: #c5d5a5;
+                padding: 20px;
+                text-align: center;
+                border-bottom: 2px solid #a3d9a5;
+                position: relative;
+            }
+            .icono {
+                width: 120px;
+                height: auto;
+                vertical-align: middle;
+                margin-right: 10px;
+
+            }
+            h1 {
+                font-family: 'Rochester', cursive;
+                font-size: 50px;
+                margin: 0;
+                display: inline-block;
+                vertical-align: middle;
+                color: #333;
+            }
+            .subtitulo {
+                font-family: 'Jacques Francois', serif;
+                font-size: 18px;
+                color: #444;
+                margin-top: 5px;
+            }
+            .iconos-header {
+                position: absolute;
+                top: 25px;
+                right: 25px;
+            }
+            .iconos-header a {
+                color: #333;
+                margin-left: 15px;
+                font-size: 18px;
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+            .iconos-header a:hover {
+                color: #7a9e4b;
+            }
+            nav {
+                background-color: #ffffff;
+                padding: 10px;
+                text-align: center;
+            }
+            nav a {
+                text-decoration: none;
+                color: #333;
+                background-color: #c5d5a5;
+                padding: 10px 20px;
+                margin: 5px;
+                border-radius: 5px;
+                font-weight: bold;
+                border: 1px solid #a0dca2;
+                transition: background-color 0.3s ease;
+            }
+            nav a:hover {
+                background-color: #d3f9d8;
+            }
+            .lineas-decorativas {
+                width: 100%;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+            .linea {
+                height: 10px;
+                width: 100%;
+            }
+            .contenido-historia {
+                max-width: 900px;
+                margin: 40px auto;
+                padding: 20px;
+                text-align: justify;
+            }
+            .contenido-historia h2 {
+                font-family: 'Jacques Francois', serif;
+                font-size: 35px;
+                font-weight: bold;
+                color: #ffffff;
+                text-align: center;
+                background-color: #677a3e;
+                width: 650px;
+                height: 90px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 30px;
+                margin: 0 auto 20px auto;
+                position: relative;
+
+
+            }
+            .contenido-historia h3 {
+                text-align: center;
+                font-family: 'Source Sans 3', serif;
+                font-size: 20px;
+                color: #ee7171;
+                margin-bottom: 50px;
+            }
+            .contenido-historia img {
+                width: 280px;
+                float: left;
+                margin: 0 20px 20px 0;
+                border-radius: 10px;
+                border: 3px solid #f4b5c3;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+            footer {
+                background-color: #c5d5a5;
+                padding: 30px 20px;
+                text-align: center;
+                border-top: 1px solid #ccc;
+            }
+            .redes-sociales a {
+                color: #444;
+                font-size: 24px;
+                margin: 0 15px;
+                text-decoration: none;
+            }
+            .politicas {
+                margin-top: 10px;
+                font-size: 14px;
+                color: #333;
+            
+                
+            
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <img src="/img/logo1.png" alt="Logo Que Arte" class="icono">
+            <h1>Que Arte Pastelería</h1>
+            <div class="subtitulo">Una experiencia de arte y sabor</div>
+            <div class="iconos-header">
+                <a href="#"><i class="fas fa-heart"></i></a>
+                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="/usuario/login"><i class="fas fa-user"></i></a>
+            </div>
+        </header>
+
+        <div class="lineas-decorativas">
+            <div class="linea" style="background-color: #f4b5c3;"></div>
+            <div class="linea" style="background-color: #ffffff;"></div>
+            <div class="linea" style="background-color: #c5d5a5;"></div>
+        </div>
+
+        <nav>
+            <a href="/">Inicio</a>
+            <a href="/menu">Menú</a>
+            <a href="/cotizaciones">Cotizaciones</a>
+            <a href="/contacto">Contacto</a>
+            <a href="/historia">Historia</a>
+        </nav>
+
+        <section class="contenido-historia">
+            <h2>Conozca más sobre Nosotros</h2>
+            <h3>DESDE EL 2012 CREANDO ARTE Y SABOR</h3>
+            <img src="/img/ImagenHistoria.jpg" alt="Fundadora Que Arte">
+            <p>Que Arte Pastelería nació como un emprendimiento familiar en el corazón de Heredia, Costa Rica, en el año 2012, impulsado por la pasión de Sterling Rodríguez por el arte de la repostería. Inicialmente comenzó desde casa, elaborando pasteles personalizados para amigos y familiares, destacándose por su dedicación al detalle y el sabor artesanal. Sobre todo, su deseo de elaborar productos combinando el buen sabor, el arte y cariño de hogar.</p>
+            <p>Gracias al voz a voz y la fidelidad de sus primeros clientes, el proyecto creció rápidamente, incorporando nuevas líneas de productos como queques navideños, cupcakes, macarrons y el montaje de mesas dulces para eventos. A lo largo del tiempo, Que Arte Pastelería se ha posicionado como una opción confiable y creativa en celebraciones especiales, donde cada producto cuenta una historia y cada diseño es una obra de arte.</p>
+            <p>Hoy, Sterling continúa innovando y perfeccionando su técnica, ofreciendo experiencias dulces personalizadas que combinan estética, sabor y amor por la repostería.</p>
+        </section>
+
+        <footer>
+            <div class="redes-sociales">
+                <a href="https://api.whatsapp.com/send/?phone=%2B50683491054" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/queartepasteleria" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/1DpGRVcZVK" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            </div>
+            <div class="politicas">
+                Políticas de privacidad &nbsp;&nbsp;&nbsp;
+                Políticas de devoluciones &nbsp;&nbsp;&nbsp;
+                Políticas de entrega &nbsp;&nbsp;&nbsp;
+                Términos y Condiciones de servicio
+            </div>
+        </footer>
+    </body>
+</html>

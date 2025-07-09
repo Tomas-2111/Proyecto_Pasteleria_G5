@@ -10,4 +10,9 @@ public class PaginaController {
     public String mostrarMenu() {
         return "menu"; // Se refiere a menu.html en /resources/templates/
     }
+    
+    @GetMapping("/historia")
+    public String mostrarHistoria() {
+        return "Historia"; 
+    }
 }
