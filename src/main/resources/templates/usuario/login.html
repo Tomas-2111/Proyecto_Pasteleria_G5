@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Que Arte Pasteleria</title>
+    </head>
+    <body>
+        <section th:fragment="login">
+            <div id="login" >
+                <div>
+                    <div>
+                        <div class="bg-info text-white">
+                            <h5 class="">Login</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button>
+                        </div> 
+                        <form method="POST" th:action="@{/usuario/validation}" th:object="${usuario}"
+                              class="was-validated" enctype="multipart/form-data">
+                            <div class="">
+                                <div class="mb-3">
+                                    <label for="correo">Correo</label>
+                                    <input type="text" class="form-control" name="correo" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="contrasena">Contraseña</label>
+                                    <input type="text" class="form-control" name="contrasena" required="true"/>
+                                
+                                </div>
+                                
+                                
+                               
+                            </div>
+                            <div class="">
+                                <button class="btn btn-primary" type="submit">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

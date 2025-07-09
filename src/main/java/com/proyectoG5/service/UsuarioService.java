@@ -15,10 +15,10 @@ import java.util.List;
 
 public interface UsuarioService {
     
-    public List<Usuario> getUsuarios();
+    //public List<Usuario> getUsuarios();
     
-    public Usuario getUsuario(Usuario usuario);
+    public Usuario getUsuarioByPass(Usuario usuario);
     
-    public void save(Usuario usuario);
+    //public void save(Usuario usuario);
 
 }
