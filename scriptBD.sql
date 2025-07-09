@@ -2,7 +2,7 @@ drop schema if exists pasteleriaG5;
 drop user if exists usuario_pasteleria; 
 CREATE SCHEMA pasteleriaG5 ; 
 
-create user 'usuario_pasteleria'@'%' identified by 'Pasteleria_G5.'; 
+create user 'usuario_pasteleria'@'%' identified by 'Pasteleria_G5'; 
 
 grant all privileges on pasteleriaG5.* to 'usuario_pasteleria'@'%'; 
 flush privileges;
@@ -34,3 +34,4 @@ INSERT INTO pasteleriaG5.usuario(id_usuario,nombre,correo,contrasena,id_rol) VAL
 (1,"TEST ADMIN","tojoalgu@gmail.com","pass123",1),(2,"TEST CLIENTE","cliente@gmail.com","cliente123",2);
 
 SELECT * FROM pasteleriaG5.usuario;
+

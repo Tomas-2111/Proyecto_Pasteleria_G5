@@ -12,6 +12,7 @@ package com.proyectoG5.controller;
 import com.proyectoG5.dao.UsuarioDao;
 import com.proyectoG5.domain.Usuario;
 import com.proyectoG5.service.UsuarioService;
+import com.proyectoG5.service.RolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,8 +31,13 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
     
+    @Autowired
+    private RolService rolService;
+    
     @GetMapping("/login")
-    public String inicio(){
+    public String inicio(Model model){
+        var roles= rolService.getRoles();
+        model.addAttribute("roles", roles);
         return "/usuario/login";
     
     }
@@ -48,6 +54,12 @@ public class UsuarioController {
             return "redirect:/";
         }
         
+    }
+    
+    @PostMapping("/register")
+    public String registrar(Usuario usuario){
+        usuarioService.save(usuario);
+        return "redirect:/";
     }
 
 }

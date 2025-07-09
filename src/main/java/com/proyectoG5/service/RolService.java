@@ -14,6 +14,8 @@ import java.util.List;
 
 public interface RolService {
     
-    public Rol getRol(Rol rol);
+    public List<Rol> getRoles();
+    
+   // public Rol getRol(Rol rol);
 
 }

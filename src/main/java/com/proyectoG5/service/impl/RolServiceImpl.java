@@ -9,33 +9,25 @@ package com.proyectoG5.service.impl;
  *
  * @author Tomás Alfaro
  */
-import com.proyectoG5.dao.UsuarioDao;
-import com.proyectoG5.domain.Usuario;
-import com.proyectoG5.service.UsuarioService;
+import com.proyectoG5.dao.RolDao;
+import com.proyectoG5.domain.Rol;
+import com.proyectoG5.service.RolService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class UsuarioServiceImpl implements UsuarioService {
+public class RolServiceImpl implements RolService{
     
     @Autowired
-    private UsuarioDao usuarioDao;
+    private RolDao rolDao;
     
     @Override
     @Transactional(readOnly=true)
-    public Usuario getUsuarioByPass(Usuario usuario)
-    {
-        return usuarioDao.findByCorreoAndContrasena(usuario.getCorreo(),usuario.getContrasena()).orElse(null);
-        
+    public List<Rol> getRoles(){
+        var lista=rolDao.findAll();
+        return lista;
     }
-    
-    @Override
-    @Transactional()
-    public void save(Usuario usuario){
-        usuarioDao.save(usuario);
-    }
-    
 
 }

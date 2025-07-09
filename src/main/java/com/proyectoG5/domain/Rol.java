@@ -27,6 +27,10 @@ public class Rol implements Serializable{
     private Long id_rol;
     private String nombre;
     
+    @OneToMany
+    @JoinColumn(name="id_rol")
+    List<Usuario> usuarios;
+    
     public Rol() {
     }
     
