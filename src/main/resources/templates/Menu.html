@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
-    <title>Que Arte Pastelería</title>
+    <title>Menú - Que Arte Pastelería</title>
 
     <!-- Fuentes personalizadas -->
     <link href="https://fonts.googleapis.com/css2?family=Rochester&family=Jacques+Francois&display=swap" rel="stylesheet">
@@ -9,7 +9,7 @@
     <!-- Iconos de redes sociales -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <style>
+<style>
         body {
             background-color: #ffffff; /* ahora blanco */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -82,23 +82,9 @@
             margin-top: 10px;
             margin-bottom: 10px; /* NUEVO */
         }
-        
-        .contenedor-imagenes-secundarias {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: nowrap; /* ← FORZAR UNA SOLA FILA */
-            overflow-x: auto;   /* ← SCROLL SI NO CABE EN PANTALLA */
-            padding: 0 20px;
-        }
 
-        .imagen-galeria-con-banner {
-            position: relative;
-            max-width: 600px;
-            width: 100%;
-            flex: 0 0 auto;
-            margin: 0 auto;
-        }
+
+
 
 
 
@@ -113,27 +99,10 @@
         }
 
 
-        .imagen-banner {
-            width: 90%; /* o 70% */
-            max-height: 250px;
-            object-fit: contain; /* cambia cover por contain */
-            display: block;
-            margin: 0 auto;
-        }
 
 
-        .mensaje-banner {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 30px;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 15px 30px;
-            border-radius: 10px;
-            font-family: 'Jacques Francois', serif;
-        }
+
+
         
         .banner-estilo-secundario {
             text-align: center;
@@ -142,32 +111,6 @@
 
 
 
-        .imagen-galeria-con-banner img {
-            width: 100%;
-            border-radius: 10px;
-            border: 3px solid #f4b5c3;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            object-fit: cover;
-        }
-
-        .mensaje-banner-secundario {
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            font-family: 'Jacques Francois', serif;
-            font-size: 22px;
-            padding: 12px 25px;
-            border-radius: 8px;
-            white-space: nowrap;
-        }
-        
-        .imagen-productos-temporada {
-            text-align: center;
-            margin: 40px 0;
-        }
 
 
 
@@ -203,8 +146,49 @@
             font-size: 14px;
             color: #333;
         }
-    </style>
+        
+        .contenedor-menu {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 20px;
+            padding: 40px 20px;
+            flex-wrap: wrap;
+        }
 
+        .item-menu {
+            position: relative;
+            width: 300px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .item-menu img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border: 3px solid #f4b5c3;
+            border-radius: 10px;
+        }
+
+        .banner-texto {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            font-family: 'Jacques Francois', serif;
+            font-size: 20px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            white-space: nowrap;
+        }
+
+        
+        
+    </style>
 </head>
 <body>
 
@@ -220,7 +204,6 @@
         <a href="/usuario/login"><i class="fas fa-user"></i></a>
 
 
-
         </div>
     </header>
     
@@ -230,52 +213,29 @@
     <div class="linea" style="background-color: #c5d5a5;"></div>
     </div>
 
-
     <nav>
         <a href="/">Inicio</a>
-        <a href="/menu">Menú</a>
+        <a href="/productos" style="background-color:#7a9e4b; color:#fff;">Menú</a>
         <a href="/cotizaciones">Cotizaciones</a>
         <a href="/contacto">Contacto</a>
         <a href="/historia">Historia</a>
     </nav>
-    
-    <!-- Imagen destacada con mensaje -->
-    <section class="banner-estilo-secundario">
-    <div class="imagen-galeria-con-banner">
-        <img src="img/484048741_1085332370276618_6805557842764513448_n.jpg" alt="Queque personalizado">
-        <div class="mensaje-banner-secundario">Personaliza tu queque con nosotros</div>
-    </div>
-    </section>
 
-    
-    <section class="galeria-secundaria">
-        <div class="contenedor-imagenes-secundarias">
-            <div class="imagen-galeria-con-banner">
-                <img src="img/para queques.jpg" alt="Menú">
-                <div class="mensaje-banner-secundario">Menú</div>
-            </div>
-            <div class="imagen-galeria-con-banner">
-                <img src="img/486707253_1096767099133145_4528489737006875186_n.jpg" alt="Blog">
-                <div class="mensaje-banner-secundario">Blog</div>
-            </div>
+    <section class="contenedor-menu">
+        <div class="item-menu">
+            <img src="img/quques en plural.jpg" alt="Sección de Queques">
+            <div class="banner-texto">Sección de Queques</div>
         </div>
-    </section>
-    
-    <section class="imagen-productos-temporada">
-        <div class="imagen-galeria-con-banner">
-            <img src="img/Captura de pantalla 2025-06-12 a la(s) 14.56.55.png" alt="Productos de temporada">
-            <div class="mensaje-banner-secundario">Productos de temporada</div>
+        <div class="item-menu">
+            <img src="img/mesa dulce.jpg" alt="Mesas Dulces">
+            <div class="banner-texto">Mesas Dulces</div>
+        </div>
+        <div class="item-menu">
+            <img src="img/Salada 6.jpg" alt="Sección de productos salados">
+            <div class="banner-texto">Sección de productos salados</div>
         </div>
     </section>
 
-    
-    
-    <div class="contenido">
-        <h2>Bienvenido a nuestra pastelería</h2>
-        <p>Descubre nuestros productos y el talento detrás de cada pastel.</p>
-    </div>
-
-    <!-- Pie de página -->
     <footer>
         <div class="redes-sociales">
             <a href="https://api.whatsapp.com/send/?phone=%2B50683491054&text&type=phone_number&app_absent=0" target="_blank"><i class="fab fa-whatsapp"></i></a>
