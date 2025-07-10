@@ -15,4 +15,9 @@ public class PaginaController {
     public String mostrarHistoria() {
         return "Historia"; 
     }
+    
+    @GetMapping("/contacto")
+    public String mostrarContacto() {
+        return "Contacto"; 
+    }
 }
