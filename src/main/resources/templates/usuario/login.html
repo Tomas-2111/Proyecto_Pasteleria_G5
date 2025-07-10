@@ -88,6 +88,27 @@
             margin-bottom: 30px;
             
         }
+        
+        nav {
+            background-color: #ffffff;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            background-color: #c5d5a5;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            font-weight: bold;
+            border: 1px solid #a0dca2;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #d3f9d8;
+        }
+        
         .form-label {
             font-weight: 500;
             color: #5c5c5c;
@@ -152,6 +173,10 @@
             font-size: 14px;
             color: #333;
         }
+        
+               
+        
+        
     </style>
 </head>
 <body>
@@ -173,48 +198,58 @@
         <div class="linea" style="background-color: #c5d5a5;"></div>
     </div>
 
-    <section>
-        <div class="container">
-            <div class="card">
-                <div class="card-header">Iniciar Sesión</div>
-                <div class="card-body">
-                    <form method="POST" th:action="@{/usuario/validation}" th:object="${usuario}" class="needs-validation" novalidate>
-                        <label for="correo" class="form-label">Correo</label>
-                        <input type="email" class="form-control" th:field="*{correo}" required />
+    <nav>
+        <a href="/">Inicio</a>
+        <a href="/menu">Menú</a>
+        <a href="/cotizaciones">Cotizaciones</a>
+        <a href="/contacto">Contacto</a>
+        <a href="/historia">Historia</a>
+    </nav>
 
-                        <label for="contrasena" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" th:field="*{contrasena}" required />
+    <section style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin: 60px auto; max-width: 1200px;">
+        <!-- Login -->
+        <div class="card" style="flex: 1; min-width: 300px;">
+            <div class="card-header">Iniciar Sesión</div>
+            <div class="card-body">
+                <form method="POST" th:action="@{/usuario/validation}" th:object="${usuario}" class="needs-validation" novalidate>
+                    <label for="correo" class="form-label">Correo</label>
+                    <input type="email" class="form-control" id="correo" th:field="*{correo}" required />
 
-                        <div class="d-grid text-center">
-                            <button class="btn btn-success" type="submit">Ingresar</button>
-                        </div>
-                    </form>
-                </div>
+                    <label for="contrasena" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="contrasena" th:field="*{contrasena}" required />
+
+                    <div class="d-grid text-center">
+                        <button class="btn btn-primary" type="submit">Ingresar</button>
+                    </div>
+                </form>
             </div>
+        </div>
 
-            <div class="card">
-                <div class="card-header">Registro</div>
-                <div class="card-body">
-                    <form method="POST" th:action="@{/usuario/register}" th:object="${usuario}" class="needs-validation" novalidate>
-                        <input type="hidden" name="idRol" value="2" />
 
-                        <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" th:field="*{nombre}" required />
+        <!-- Registro -->
+        <div class="card" style="flex: 1; min-width: 300px;">
+            <div class="card-header">Registro</div>
+            <div class="card-body">
+                <form method="POST" th:action="@{/usuario/register}" th:object="${usuario}" class="needs-validation" novalidate>
+                    <input type="hidden" name="idRol" value="2" />
 
-                        <label for="correo" class="form-label">Correo</label>
-                        <input type="email" class="form-control" th:field="*{correo}" required />
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required />
 
-                        <label for="contrasena" class="form-label">Contraseña</label>
-                        <input type="password" class="form-control" th:field="*{contrasena}" required />
+                    <label for="correo-registro" class="form-label">Correo</label>
+                    <input type="email" class="form-control" id="correo-registro" th:field="*{correo}" required />
 
-                        <div class="d-grid text-center">
-                            <button class="btn btn-primary" type="submit">Registrarse</button>
-                        </div>
-                    </form>
-                </div>
+                    <label for="contrasena-registro" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" id="contrasena-registro" th:field="*{contrasena}" required />
+
+                    <div class="d-grid text-center">
+                        <button class="btn btn-primary" type="submit">Registrarse</button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
+
 
     <footer>
         <div class="redes-sociales">
