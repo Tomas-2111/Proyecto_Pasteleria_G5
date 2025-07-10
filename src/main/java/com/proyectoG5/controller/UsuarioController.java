@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.ui.Model;
 
 @Controller
 @Slf4j
@@ -24,9 +25,13 @@ public class UsuarioController {
 
     // Muestra el formulario de login
     @GetMapping("/login")
-    public String mostrarLogin() {
-        return "usuario/login"; // ✅ Sin "/" al inicio
-    }
+public String mostrarLogin(Model model) {
+    model.addAttribute("usuario", new Usuario());
+    return "usuario/login";
+}
+
+    
+    
 
     // Valida los datos del usuario
     @PostMapping("/validation")
