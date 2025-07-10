@@ -30,10 +30,8 @@ public class Usuario implements Serializable{
     private String nombre;
     private String correo;
     private String contrasena;
-    
-    @ManyToOne
-    @JoinColumn(name="id_rol")
-    Rol rol;
+    private int idRol;
+
     
     public Usuario(){
         
