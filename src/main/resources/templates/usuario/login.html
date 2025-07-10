@@ -1,84 +1,316 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-    <head th:replace="~{layout/plantilla :: head}">
-        <title>Que Arte Pasteleria</title>
-    </head>
-    <body>
-        <section th:fragment="login">
-            <div id="login" >
-                <div>
-                    <div>
-                        <div class="bg-info text-white">
-                            <h5 class="">Login</h5>
-                            <a href="/" class="btn-close" aria-label="Close"></a>
-                        </div> 
-                        <form method="POST" th:action="@{/usuario/validation}" th:object="${usuario}"
-                              class="was-validated" enctype="multipart/form-data">
-                            <div class="">
-                                <div class="mb-3">
-                                    <label for="correo">Correo</label>
-                                    <input type="text" class="form-control" name="correo" required="true"/>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="contrasena">Contraseña</label>
-                                    <input type="text" class="form-control" name="contrasena" required="true"/>
-                                
-                                </div>
-                                
-                                
-                               
-                            </div>
-                            <div class="">
-                                <button class="btn btn-primary" type="submit">Guardar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Que Arte Pastelería</title>
+
+    <!-- Fuentes personalizadas -->
+    <link href="https://fonts.googleapis.com/css2?family=Rochester&family=Jacques+Francois&display=swap" rel="stylesheet">
+
+    <!-- Iconos de redes sociales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            background-color: #ffffff; /* ahora blanco */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #c5d5a5; /* nuevo verde */
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #a3d9a5;
+            position: relative; /* necesario para los íconos */
+        }
+        .iconos-header {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+        }
+
+        .iconos-header a {
+            color: #333;
+            margin-left: 15px;
+            font-size: 18px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .iconos-header a:hover {
+            color: #7a9e4b; /* un verde más oscuro al pasar el mouse */
+        }
+
+
+        h1 {
+            font-family: 'Rochester', cursive;
+            font-size: 50px;
+            margin: 0;
+            display: inline-block;
+            vertical-align: middle;
+            color: #333;
+        }
+
+        .subtitulo {
+            font-family: 'Jacques Francois', serif;
+            font-size: 18px;
+            color: #444;
+            margin-top: 5px;
+        }
+
+        nav {
+            background-color: #ffffff; /* antes era verde, ahora blanco */
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            background-color: #c5d5a5;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            font-weight: bold;
+            border: 1px solid #a0dca2;
+            transition: background-color 0.3s ease;
+        }
         
-         <section th:fragment="registro">
-            <div id="registro" >
-                <div>
-                    <div>
-                        <div class="bg-info text-white">
-                            <h5 class="">Registro</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="" aria-label="Close"></button>
-                        </div> 
-                        <form method="POST" th:action="@{/usuario/register}" th:object="${usuario}"
-                              class="was-validated" enctype="multipart/form-data">
-                            <div class="">
-                                <input type="hidden" name="idRol" value="2"/>
-                                <div class="mb-3">
-                                    <label for="nombre">Nombre</label>
-                                    <input type="text" class="form-control" name="nombre" required="true"/>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="correo">Correo</label>
-                                    <input type="text" class="form-control" name="correo" required="true"/>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="contrasena">Contraseña</label>
-                                    <input type="text" class="form-control" name="contrasena" required="true"/>
-                                
-                                </div>
-                                
-                                
-                               
-                            </div>
-                            <div class="">
-                                <button class="btn btn-primary" type="submit">Guardar</button>
-                            </div>
-                        </form>
-                    </div>
+        .lineas-decorativas {
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 10px; /* NUEVO */
+        }
+        
+        .contenedor-imagenes-secundarias {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: nowrap; /* ← FORZAR UNA SOLA FILA */
+            overflow-x: auto;   /* ← SCROLL SI NO CABE EN PANTALLA */
+            padding: 0 20px;
+        }
+
+        .imagen-galeria-con-banner {
+            position: relative;
+            max-width: 600px;
+            width: 100%;
+            flex: 0 0 auto;
+            margin: 0 auto;
+        }
+
+
+
+        .linea {
+            height: 10px;
+            width: 100%;
+        }
+
+
+        nav a:hover {
+            background-color: #d3f9d8;
+        }
+
+
+        .imagen-banner {
+            width: 90%; /* o 70% */
+            max-height: 250px;
+            object-fit: contain; /* cambia cover por contain */
+            display: block;
+            margin: 0 auto;
+        }
+
+
+        .mensaje-banner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 30px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-family: 'Jacques Francois', serif;
+        }
+        
+        .banner-estilo-secundario {
+            text-align: center;
+            margin: 40px 0 30px 0;
+        }
+
+
+
+        .imagen-galeria-con-banner img {
+            width: 100%;
+            border-radius: 10px;
+            border: 3px solid #f4b5c3;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            object-fit: cover;
+        }
+
+        .mensaje-banner-secundario {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            font-family: 'Jacques Francois', serif;
+            font-size: 22px;
+            padding: 12px 25px;
+            border-radius: 8px;
+            white-space: nowrap;
+        }
+        
+        .imagen-productos-temporada {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+
+
+
+        .contenido {
+            text-align: center;
+            padding: 50px;
+        }
+
+        .icono {
+                width: 120px;
+                height: auto;
+                vertical-align: middle;
+                margin-right: 10px;
+        }
+
+        footer {
+            background-color: #c5d5a5;
+            padding: 30px 20px 20px 20px; /* más espacio arriba */
+            text-align: center;
+            border-top: 1px solid #ccc;
+        }
+
+
+        .redes-sociales a {
+            color: #444;
+            font-size: 24px;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        .politicas {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+
+</head>
+        <body>
+
+                <header>
+             <img src="/img/logo1.png" alt="Logo Que Arte" class="icono">
+            <h1>Que Arte Pastelería</h1>
+            <div class="subtitulo">Una experiencia de arte y sabor</div>
+
+            <div class="iconos-header">
+            <a href="#"><i class="fas fa-heart"></i></a>
+            <a href="#"><i class="fas fa-shopping-cart"></i></a>
+            <a href="#"><i class="fas fa-search"></i></a>
+            <a href="/usuario/login"><i class="fas fa-user"></i></a>
+
+
+
+            </div>
+        </header>
+
+        <div class="lineas-decorativas">
+        <div class="linea" style="background-color: #f4b5c3;"></div>
+        <div class="linea" style="background-color: #ffffff;"></div>
+        <div class="linea" style="background-color: #c5d5a5;"></div>
+        </div>
+
+
+        <nav>
+            <a href="/">Inicio</a>
+            <a href="/menu">Menú</a>
+            <a href="/cotizaciones">Cotizaciones</a>
+            <a href="/contacto">Contacto</a>
+            <a href="/historia">Historia</a>
+        </nav>
+        
+        
+        <section style="display: flex; justify-content: center; gap: 50px; padding: 40px;">
+            <!-- Login -->
+            <div style="flex: 1; max-width: 400px;">
+                <div class="bg-info text-white" style="padding: 10px;">
+                    <h5>Login</h5>
+                    <a href="/" class="btn-close" aria-label="Close"></a>
                 </div>
+                <form method="POST" th:action="@{/usuario/validation}" th:object="${usuario}"
+                      class="was-validated" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="correo">Correo</label>
+                        <input type="text" class="form-control" name="correo" required="true"/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contrasena">Contraseña</label>
+                        <input type="text" class="form-control" name="contrasena" required="true"/>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" type="submit">Ingresar</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Línea divisoria -->
+            <div style="border-left: 2px solid #ccc; height: auto;"></div>
+
+            <!-- Registro -->
+            <div style="flex: 1; max-width: 400px;">
+                <div class="bg-info text-white" style="padding: 10px;">
+                    <h5>Registro</h5>
+                </div>
+                <form method="POST" th:action="@{/usuario/register}" th:object="${usuario}"
+                      class="was-validated" enctype="multipart/form-data">
+                    <input type="hidden" name="idRol" value="2"/>
+                    <div class="mb-3">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" class="form-control" name="nombre" required="true"/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="correo">Correo</label>
+                        <input type="text" class="form-control" name="correo" required="true"/>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contrasena">Contraseña</label>
+                        <input type="text" class="form-control" name="contrasena" required="true"/>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" type="submit">Registrar</button>
+                    </div>
+                </form>
             </div>
         </section>
+
     </body>
+
+        <!-- Pie de página -->
+        <footer>
+            <div class="redes-sociales">
+                <a href="https://api.whatsapp.com/send/?phone=%2B50683491054&text&type=phone_number&app_absent=0" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/queartepasteleria?igsh=MXd3NnE2N3V1cGRlMw==" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.facebook.com/share/1DpGRVcZVK/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            </div>
+
+            <div class="politicas">
+                Políticas de privacidad &nbsp;&nbsp;&nbsp;
+                Políticas de devoluciones &nbsp;&nbsp;&nbsp;
+                Políticas de entrega &nbsp;&nbsp;&nbsp;
+                Términos y Condiciones de servicio
+            </div>
+        </footer>
+
+        </body>
 </html>

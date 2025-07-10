@@ -8,16 +8,21 @@ public class PaginaController {
 
     @GetMapping("/menu")
     public String mostrarMenu() {
-        return "menu"; // Se refiere a menu.html en /resources/templates/
+        return "menu";
     }
-    
+
     @GetMapping("/historia")
     public String mostrarHistoria() {
-        return "Historia"; 
+        return "Historia";
     }
-    
+
     @GetMapping("/contacto")
     public String mostrarContacto() {
-        return "Contacto"; 
+        return "Contacto";
     }
+
+    @GetMapping("/cotizaciones")
+    public String mostrarCotizaciones() {
+        return "Cotizaciones"; // Sin la barra inicial y respetando mayúsculas
+}
 }

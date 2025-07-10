@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Que Arte Pastelería - Contacto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rochester&family=Jacques+Francois&family=Source+Sans+3:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #c5d5a5;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #a3d9a5;
+            position: relative;
+        }
+        .icono {
+            width: 120px;
+            height: auto;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        h1 {
+            font-family: 'Rochester', cursive;
+            font-size: 50px;
+            margin: 0;
+            display: inline-block;
+            vertical-align: middle;
+            color: #333;
+        }
+        .subtitulo {
+            font-family: 'Jacques Francois', serif;
+            font-size: 18px;
+            color: #444;
+            margin-top: 5px;
+        }
+        .iconos-header {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+        }
+        .iconos-header a {
+            color: #333;
+            margin-left: 15px;
+            font-size: 18px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .iconos-header a:hover {
+            color: #7a9e4b;
+        }
+        nav {
+            background-color: #ffffff;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            background-color: #c5d5a5;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            font-weight: bold;
+            border: 1px solid #a0dca2;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #d3f9d8;
+        }
+        .lineas-decorativas {
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .linea {
+            height: 10px;
+            width: 100%;
+        }
+        .contacto {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .mapas {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .mapas img {
+            width: 200px;
+            height: auto;
+               
+        }
+        .mapas iframe {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        .info-contacto {
+            margin-top: 30px;
+            font-size: 16px;
+            color: #444;
+            line-height: 1.8;
+             margin-top: 5px;
+            margin-bottom: 30px;
+        }
+        .info-contacto strong {
+            display: inline-block;
+            width: 100px;
+            color: #333;
+        }
+        .info-contacto a {
+            color: #444;
+            text-decoration: underline;
+           
+        }
+        .iconos-mapas {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        .iconos-mapas a img {
+            width: 60px;
+            height: 60px;
+        }
+        .como-llegar {
+            text-align: center;
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight: 300;
+            font-size: 20px;
+            color: #ee7171;
+            margin-top: 50px;
+            margin-bottom: 5px;
+        }
+        footer {
+            background-color: #c5d5a5;
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid #ccc;
+        }
+        .redes-sociales a {
+            color: #444;
+            font-size: 24px;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .politicas {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+        
+        .form-cotizacion {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .formulario {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .formulario input,
+        .formulario textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .btn-cotizar {
+            padding: 10px 20px;
+            background-color: #c5d5a5;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .btn-cotizar:hover {
+            background-color: #b0c78f;
+        }
+
+        .imagen-cotizacion {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            text-align: center;
+        }
+
+        .imagen-cotizacion img {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        
+    </style>
+</head>
+<body>
+    <header>
+        <img src="/img/logo1.png" alt="Logo Que Arte" class="icono">
+        <h1>Que Arte Pastelería</h1>
+        <div class="subtitulo">Una experiencia de arte y sabor</div>
+        <div class="iconos-header">
+            <a href="#"><i class="fas fa-heart"></i></a>
+            <a href="#"><i class="fas fa-shopping-cart"></i></a>
+            <a href="#"><i class="fas fa-search"></i></a>
+            <a href="/usuario/login"><i class="fas fa-user"></i></a>
+        </div>
+    </header>
+
+    <div class="lineas-decorativas">
+        <div class="linea" style="background-color: #f4b5c3;"></div>
+        <div class="linea" style="background-color: #ffffff;"></div>
+        <div class="linea" style="background-color: #c5d5a5;"></div>
+    </div>
+
+    <nav>
+        <a href="/">Inicio</a>
+        <a href="/menu">Menú</a>
+        <a href="/cotizaciones">Cotizaciones</a>
+        <a href="/contacto">Contacto</a>
+        <a href="/historia">Historia</a>
+    </nav>
+
+
+    <section class="form-cotizacion">
+        <div class="formulario">
+            <h2>Solicitud de Cotización</h2>
+            <form method="POST" th:action="@{/usuario/enviarCotizacion}">
+                <input type="text" name="nombre" placeholder="Nombre completo" required>
+                <input type="email" name="correo" placeholder="Correo electrónico" required>
+                <input type="tel" name="telefono" placeholder="Teléfono" required>
+                <textarea name="detallePedido" rows="5" placeholder="Detalles del pedido..." required></textarea>
+
+                <button type="submit" class="btn-cotizar">Cotizar</button>
+            </form>
+        </div>
+
+        <div class="imagen-cotizacion">
+            <img src="img/ChatGPT Image 12 jun 2025, 02_49_08 p.m..png" alt="Imagen cotización">
+        </div>
+    </section>
+
+    <footer>
+        <div class="redes-sociales">
+            <a href="https://api.whatsapp.com/send/?phone=%2B50683491054" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/queartepasteleria" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/share/1DpGRVcZVK" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        </div>
+        <div class="politicas">
+            Políticas de privacidad &nbsp;&nbsp;&nbsp;
+            Políticas de devoluciones &nbsp;&nbsp;&nbsp;
+            Políticas de entrega &nbsp;&nbsp;&nbsp;
+            Términos y Condiciones de servicio
+        </div>
+    </footer>
+</body>
+</html>
