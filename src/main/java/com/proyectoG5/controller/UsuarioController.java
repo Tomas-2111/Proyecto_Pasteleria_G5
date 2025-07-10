@@ -43,8 +43,14 @@ public class UsuarioController {
     
      @PostMapping("/register")
     public String registrar(Usuario usuario){
-        usuario.setIdRol(2);
-        usuarioService.save(usuario);
-        return "redirect:/";
+       
+        if(usuarioService.getUsuarioByCorreo(usuario)==null){
+            usuario.setIdRol(2);
+            usuarioService.save(usuario);
+            return "redirect:/";
+        }else{
+           return "redirect:/usuario/login"; 
+        }
+        
     }
 }

@@ -20,5 +20,7 @@ public interface UsuarioService {
     public Usuario getUsuarioByPass(Usuario usuario);
     
     public void save(Usuario usuario);
+    
+    public Usuario getUsuarioByCorreo(Usuario usuario0);
 
 }

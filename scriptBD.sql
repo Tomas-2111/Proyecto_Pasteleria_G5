@@ -35,3 +35,4 @@ INSERT INTO pasteleriaG5.usuario(id_usuario,nombre,correo,contrasena,id_rol) VAL
 
 SELECT * FROM pasteleriaG5.usuario;
 
+DELETE FROM pasteleriaG5.usuario WHERE id_rol IS NULL;

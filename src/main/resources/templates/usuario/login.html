@@ -54,7 +54,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         <form method="POST" th:action="@{/usuario/register}" th:object="${usuario}"
                               class="was-validated" enctype="multipart/form-data">
                             <div class="">
-                                <!--<input type="hidden" name="id_rol" th:value="2"/>-->
+                                <input type="hidden" name="idRol" value="2"/>
                                 <div class="mb-3">
                                     <label for="nombre">Nombre</label>
                                     <input type="text" class="form-control" name="nombre" required="true"/>
