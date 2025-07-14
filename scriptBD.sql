@@ -34,4 +34,13 @@ INSERT INTO pasteleriaG5.usuario(id_usuario,nombre,correo,contrasena,id_rol) VAL
 (1,"TEST ADMIN","tojoalgu@gmail.com","pass123",1),(2,"TEST CLIENTE","cliente@gmail.com","cliente123",2);
 
 SELECT * FROM pasteleriaG5.usuario;
-DELETE FROM pasteleriaG5.usuario WHERE id_usuario IN (12,13,14,15,16,17,18); 
+
+CREATE TABLE pasteleriaG5.cotizaciones_pastel
+(
+	id INT NOT NULL AUTO_INCREMENT,
+    descripcion VARCHAR (500) NOT NULL,
+    url_imagen VARCHAR (1024),
+    id_usuario INT NOT NULL,
+    PRIMARY KEY (id),
+    foreign key fk_id_usuario (id_usuario) references usuario(id_usuario)
+);
