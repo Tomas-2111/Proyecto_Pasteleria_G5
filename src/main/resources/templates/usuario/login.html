@@ -4,8 +4,9 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
     <title>Que Arte Pastelería - Iniciar Sesión</title>
-    <link href="https://fonts.googleapis.com/css2?family=Rochester&family=Jacques+Francois&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rochester&family=Jacques+Francois&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>    
+
     <style>
         body {
             background-color: #ffffff;
@@ -178,6 +179,7 @@
         
         
     </style>
+
 </head>
 <body>
     <header>
@@ -210,8 +212,11 @@
         <!-- Login -->
         <div class="card" style="flex: 1; min-width: 300px;">
             <div class="card-header">Iniciar Sesión</div>
+            <div th:if="${error != null}"  class="alert alert-danger" role="alert">
+                <p th:text="${error}"></p>
+            </div>
             <div class="card-body">
-                <form method="POST" th:action="@{/usuario/validation}" th:object="${usuario}" class="needs-validation" novalidate>
+                <form method="POST" th:action="@{/usuario/validation}" th:object="${usuario}" class="needs-validation">
                     <label for="correo" class="form-label">Correo</label>
                     <input type="email" class="form-control" id="correo" th:field="*{correo}" required />
 
@@ -229,9 +234,12 @@
         <!-- Registro -->
         <div class="card" style="flex: 1; min-width: 300px;">
             <div class="card-header">Registro</div>
+            <div th:if="${errorRegistro != null}"  class="alert alert-danger" role="alert">
+                <p th:text="${errorRegistro}"></p>
+            </div>
             <div class="card-body">
-                <form method="POST" th:action="@{/usuario/register}" th:object="${usuario}" class="needs-validation" novalidate>
-                    <input type="hidden" name="idRol" value="2" />
+                <form method="POST" th:action="@{/usuario/register}" th:object="${usuario}" class="needs-validation">
+                   
 
                     <label for="nombre" class="form-label">Nombre</label>
                     <input type="text" class="form-control" id="nombre" th:field="*{nombre}" required />
@@ -240,7 +248,7 @@
                     <input type="email" class="form-control" id="correo-registro" th:field="*{correo}" required />
 
                     <label for="contrasena-registro" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="contrasena-registro" th:field="*{contrasena}" required />
+                    <input type="password" class="form-control" id="contrasena-registro" th:field="*{contrasena}" required/>
 
                     <div class="d-grid text-center">
                         <button class="btn btn-primary" type="submit">Registrarse</button>

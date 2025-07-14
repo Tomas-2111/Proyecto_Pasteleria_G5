@@ -34,5 +34,4 @@ INSERT INTO pasteleriaG5.usuario(id_usuario,nombre,correo,contrasena,id_rol) VAL
 (1,"TEST ADMIN","tojoalgu@gmail.com","pass123",1),(2,"TEST CLIENTE","cliente@gmail.com","cliente123",2);
 
 SELECT * FROM pasteleriaG5.usuario;
-
-DELETE FROM pasteleriaG5.usuario WHERE id_rol IS NULL;
+DELETE FROM pasteleriaG5.usuario WHERE id_usuario IN (12,13,14,15,16,17,18); 
