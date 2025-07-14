@@ -44,3 +44,14 @@ CREATE TABLE pasteleriaG5.cotizaciones_pastel
     PRIMARY KEY (id),
     foreign key fk_id_usuario (id_usuario) references usuario(id_usuario)
 );
+
+CREATE TABLE pasteleriaG5.cotizaciones_reposteria
+(
+	id INT NOT NULL AUTO_INCREMENT,
+    tipo_reposteria VARCHAR (20) NOT NULL,
+    cantidad INT NOT NULL,
+    descripcion VARCHAR (200) NOT NULL,
+    id_usuario INT NOT NULL,
+    PRIMARY KEY (id),
+    foreign key fk_id_usuario (id_usuario) references usuario(id_usuario)
+);
