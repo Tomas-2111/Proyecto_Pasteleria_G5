@@ -23,6 +23,7 @@ create table pasteleriaG5.usuario (
   id_usuario INT NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(30) NOT NULL,
   correo varchar(30) NOT NULL,
+  telefono VARCHAR(30),
   contrasena VARCHAR(30) NOT NULL,
   id_rol INT,
   PRIMARY KEY (id_usuario),
@@ -41,6 +42,7 @@ CREATE TABLE pasteleriaG5.cotizaciones_pastel
     descripcion VARCHAR (500) NOT NULL,
     url_imagen VARCHAR (1024),
     id_usuario INT NOT NULL,
+    estado VARCHAR (50) NOT NULL,
     PRIMARY KEY (id),
     foreign key fk_id_usuario (id_usuario) references usuario(id_usuario)
 );
@@ -52,6 +54,7 @@ CREATE TABLE pasteleriaG5.cotizaciones_reposteria
     cantidad INT NOT NULL,
     descripcion VARCHAR (200) NOT NULL,
     id_usuario INT NOT NULL,
+    estado VARCHAR (50) NOT NULL,
     PRIMARY KEY (id),
     foreign key fk_id_usuario (id_usuario) references usuario(id_usuario)
 );

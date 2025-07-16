@@ -29,6 +29,7 @@ public class Usuario implements Serializable{
     private Long idUsuario;
     private String nombre;
     private String correo;
+    private String telefono;
     private String contrasena;
     private int idRol;
 
@@ -37,9 +38,10 @@ public class Usuario implements Serializable{
         
     }
     
-    public Usuario(String nombre, String correo, String contrasena){
+    public Usuario(String nombre, String correo, String telefono,String contrasena){
         this.nombre=nombre;
         this.correo=correo;
+        this.telefono=telefono;
         this.contrasena=contrasena;
     
     }
