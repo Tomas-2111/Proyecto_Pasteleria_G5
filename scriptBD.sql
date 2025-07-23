@@ -36,7 +36,7 @@ INSERT INTO pasteleriaG5.usuario(id_usuario,nombre,correo,contrasena,id_rol) VAL
 
 SELECT * FROM pasteleriaG5.usuario;
 
-CREATE TABLE pasteleriaG5.cotizaciones_pastel
+CREATE TABLE pasteleriaG5.cotizacion_pastel
 (
 	id INT NOT NULL AUTO_INCREMENT,
     descripcion VARCHAR (500) NOT NULL,
@@ -47,14 +47,20 @@ CREATE TABLE pasteleriaG5.cotizaciones_pastel
     foreign key fk_id_usuario (id_usuario) references usuario(id_usuario)
 );
 
-CREATE TABLE pasteleriaG5.cotizaciones_reposteria
+CREATE TABLE pasteleriaG5.cotizacion_reposteria
 (
 	id INT NOT NULL AUTO_INCREMENT,
     tipo_reposteria VARCHAR (20) NOT NULL,
     cantidad INT NOT NULL,
-    descripcion VARCHAR (200) NOT NULL,
+    descripcion VARCHAR (200),
     id_usuario INT NOT NULL,
     estado VARCHAR (50) NOT NULL,
     PRIMARY KEY (id),
     foreign key fk_id_usuario (id_usuario) references usuario(id_usuario)
 );
+
+INSERT INTO pasteleriag5.cotizacion_pastel(descripcion, id_usuario, estado) VALUES ("Tamaño: Pequeño - Sabor: Red Velvet - Relleno: Nutella - Cubierta: Semillas - Ingredientes Extra: ",2,"Pendiente Revision");
+INSERT INTO pasteleriag5.cotizacion_pastel(descripcion, id_usuario, estado) VALUES ("Tamaño: Mediano - Sabor: Chocolate - Relleno: Nutella - Cubierta: Semillas - Ingredientes Extra: ",2,"En Revision");
+
+INSERT INTO pasteleriag5.cotizacion_reposteria(tipo_reposteria, cantidad,id_usuario,estado) VALUES ("Salado",10,2,"En Revision");
+INSERT INTO pasteleriag5.cotizacion_reposteria(tipo_reposteria, cantidad,id_usuario,estado) VALUES ("Mixto",10,2,"Finalizada");

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <title>Crear Cotización</title>
+</head>
+<body>
+
+    <h2 style="text-align: center; color: #e91e63; font-size: 2em; margin-bottom: 30px;">ELIGE Y PERSONALIZA TU QUEQUE</h2>
+
+    <form th:action="@{/cotizacionPastel/guardar}" method="post" th:object="${cotizacionPastel}" enctype="multipart/form-data">
+        <div class="container">
+            <div class="column">
+                <div class="section">
+                    <h3>TAMAÑO</h3>
+                    <label><input type="radio" th:field="*{tamano}" value="GRANDE 40 PORCIONES" required> GRANDE 40 PORCIONES</label>
+                    <label><input type="radio" th:field="*{tamano}" value="MEDIANO 20 PORCIONES"> MEDIANO 20 PORCIONES</label>
+                    <label><input type="radio" th:field="*{tamano}" value="PEQUEÑO 10 PORCIONES"> PEQUEÑO 10 PORCIONES</label>
+                </div>
+
+                <div class="section">
+                    <h3>SABOR DEL QUEQUE</h3>
+                    <label><input type="radio" th:field="*{sabor}" value="CHIA - LIMON" required> CHIA - LIMON</label>
+                    <label><input type="radio" th:field="*{sabor}" value="VAINILLA - NARANJA"> VAINILLA - NARANJA</label>
+                    <label><input type="radio" th:field="*{sabor}" value="CHOCOLATE"> CHOCOLATE</label>
+                    <label><input type="radio" th:field="*{sabor}" value="REDVELVET"> REDVELVET</label>
+                    <label><input type="radio" th:field="*{sabor}" value="HIGOS"> HIGOS</label>
+                    <label><input type="radio" th:field="*{sabor}" value="COCO"> COCO</label>
+                    <label><input type="radio" th:field="*{sabor}" value="MARACUYA"> MARACUYA</label>
+                </div>
+
+                <div class="section">
+                    <h3>RELLENO</h3>
+                    <label><input type="radio" th:field="*{relleno}" value="LIMON" required> LIMON</label>
+                    <label><input type="radio" th:field="*{relleno}" value="NUTELLA"> NUTELLA</label>
+                    <label><input type="radio" th:field="*{relleno}" value="CHOCOLATE"> CHOCOLATE</label>
+                    <label><input type="radio" th:field="*{relleno}" value="FRESAS"> FRESAS</label>
+                    <label><input type="radio" th:field="*{relleno}" value="HIGOS"> HIGOS</label>
+                    <label><input type="radio" th:field="*{relleno}" value="COCO"> COCO</label>
+                    <label><input type="radio" th:field="*{relleno}" value="DULCE DE LECHE"> DULCE DE LECHE</label>
+                </div>
+            </div>
+
+            <div class="column">
+                <div class="section">
+                    <h3>TIPO DE PASTA / CUBIERTA</h3>
+                    <label><input type="radio" th:field="*{cubierta}" value="PASTA AUSTRALIANA" required> PASTA AUSTRALIANA</label>
+                    <label><input type="radio" th:field="*{cubierta}" value="LUSTRE"> LUSTRE</label>
+                    <label><input type="radio" th:field="*{cubierta}" value="FRUTAS O SEMILLAS"> FRUTAS O SEMILLAS</label>
+                </div>
+
+                <div class="section">
+                    <h3>INGREDIENTES EXTRA</h3>
+                    <label><input type="checkbox" th:field="*{extras}" value="ALMENDRAS"> ALMENDRAS</label>
+                    <label><input type="checkbox" th:field="*{extras}" value="NUECES"> NUECES</label>
+                    <label><input type="checkbox" th:field="*{extras}" value="FRESAS"> FRESAS</label>
+                    <label><input type="checkbox" th:field="*{extras}" value="MELOCOTONES"> MELOCOTONES</label>
+                    <label><input type="checkbox" th:field="*{extras}" value="ARANDANOS"> ARANDANOS</label>
+                    <label><input type="checkbox" th:field="*{extras}" value="HIGOS"> HIGOS</label>
+                    <label><input type="checkbox" th:field="*{extras}" value="CIRUELAS"> CIRUELAS</label>
+                    <label><input type="checkbox" th:field="*{extras}" value="OTROS"> OTROS</label>
+                </div>
+
+                <div class="section">
+                    <h3>AGREGAR IMAGEN DE DISEÑO</h3>
+                    <div class="drag-drop-area">
+                        Arrastra una imagen hasta aquí o sube un archivo
+                        <input type="file" name="imagenDiseno" accept="image/*"> </div>
+                </div>
+            </div>
+        </div>
+        
+        <button type="submit">COTIZAR</button>
+    </form>
+
+</body>
+</html>

@@ -17,31 +17,22 @@ import com.proyectoG5.domain.Usuario;
 
 @Data
 @Entity
-@Table(name="cotizacion_pastel")
+@Table(name="cotizacion_reposteria")
 
-public class CotizacionPastel implements Serializable{
+public class CotizacionReposteria implements Serializable{
+    
     private static final long serialVersionUID= 1L;
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id")
     
     private Long id;
-    @Transient
-    private String tamano;
-    @Transient
-    private String sabor;
-    @Transient
-    private String relleno;
-    @Transient
-    private String cubierta;
-    @Transient
-    private String[] extras;
-
+    private String tipo_reposteria;
+    private int cantidad;
     private String descripcion;
-    private String url_imagen;
     private String estado;
     
-    public CotizacionPastel(){
+    public CotizacionReposteria(){
         
     }
     
