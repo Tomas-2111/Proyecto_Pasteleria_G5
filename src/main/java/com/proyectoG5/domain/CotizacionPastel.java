@@ -41,6 +41,8 @@ public class CotizacionPastel implements Serializable{
     private String url_imagen;
     private String estado;
     
+    private int idUsuario;
+    
     public CotizacionPastel(){
         
     }

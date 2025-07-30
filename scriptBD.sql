@@ -64,3 +64,5 @@ INSERT INTO pasteleriag5.cotizacion_pastel(descripcion, id_usuario, estado) VALU
 
 INSERT INTO pasteleriag5.cotizacion_reposteria(tipo_reposteria, cantidad,id_usuario,estado) VALUES ("Salado",10,2,"En Revision");
 INSERT INTO pasteleriag5.cotizacion_reposteria(tipo_reposteria, cantidad,id_usuario,estado) VALUES ("Mixto",10,2,"Finalizada");
+
+SELECT * FROM pasteleriaG5.cotizacion_pastel;

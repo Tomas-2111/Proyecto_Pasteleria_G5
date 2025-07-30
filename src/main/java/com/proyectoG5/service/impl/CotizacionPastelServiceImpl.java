@@ -33,5 +33,12 @@ public class CotizacionPastelServiceImpl implements CotizacionPastelService{
         return lista;
         
     }
+    
+    
+    @Override
+    @Transactional()
+    public void save(CotizacionPastel cotizacionPastel){
+        cotizacionPastelDao.save(cotizacionPastel);
+    }
 
 }
