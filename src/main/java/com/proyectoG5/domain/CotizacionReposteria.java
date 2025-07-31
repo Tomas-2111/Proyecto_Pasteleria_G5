@@ -27,10 +27,12 @@ public class CotizacionReposteria implements Serializable{
     @Column(name="id")
     
     private Long id;
-    private String tipo_reposteria;
+    private String tipoReposteria;
     private int cantidad;
     private String descripcion;
     private String estado;
+    
+    private int idUsuario;
     
     public CotizacionReposteria(){
         

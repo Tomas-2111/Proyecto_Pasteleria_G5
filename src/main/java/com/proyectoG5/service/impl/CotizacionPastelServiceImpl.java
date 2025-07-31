@@ -28,7 +28,7 @@ public class CotizacionPastelServiceImpl implements CotizacionPastelService{
     public List<CotizacionPastel> getCotizacionesPastel(){
         var lista= cotizacionPastelDao.findAll();
         
-        lista.removeIf(e -> e.getEstado()=="Finalizada");
+        lista.removeIf(e -> e.getEstado().equals("Finalizada"));
         
         return lista;
         

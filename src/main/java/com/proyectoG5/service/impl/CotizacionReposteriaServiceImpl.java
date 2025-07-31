@@ -28,10 +28,16 @@ public class CotizacionReposteriaServiceImpl implements CotizacionReposteriaServ
     public List<CotizacionReposteria> getCotizacionesReposteria(){
         var lista= cotizacionReposteriaDao.findAll();
         
-        lista.removeIf(e -> e.getEstado()=="Finalizada");
+        lista.removeIf(e -> e.getEstado().equals("Finalizada"));
         
         return lista;
         
+    }
+    
+    @Override
+    @Transactional()
+    public void save(CotizacionReposteria cotizacionReposteria){
+        cotizacionReposteriaDao.save(cotizacionReposteria);
     }
     
     

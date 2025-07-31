@@ -42,7 +42,7 @@ public class CotizacionPastelController {
     
     
     @PostMapping("/guardar")
-    public void guardarCotizacionPastel(
+    public String guardarCotizacionPastel(
             CotizacionPastel cotizacionPastel,
            // @RequestParam('imagenDiseno') MultipartFile imagenDiseno,
             Model model){
@@ -75,6 +75,7 @@ public class CotizacionPastelController {
         cotizacionPastel.setEstado("Pendiente de revisión");
         cotizacionPastel.setIdUsuario(2);
         cotizacionPastelService.save(cotizacionPastel);
+        return "redirect:/cotizacionPastel/listado";
         
     }
 

@@ -15,5 +15,7 @@ import java.util.List;
 public interface CotizacionReposteriaService {
     
     public List<CotizacionReposteria> getCotizacionesReposteria();
+    
+    public void save(CotizacionReposteria cotizacionReposteria);
 
 }
