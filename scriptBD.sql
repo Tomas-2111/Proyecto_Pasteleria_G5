@@ -17,22 +17,24 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
 insert into pasteleriaG5.rol (id_rol, nombre) values
- (1,'ROLE_ADMIN'), (2,'CLIENTE');
+ (1,'ROLE_ADMIN'), (2,'ROLE_CLIENTE');
 
 create table pasteleriaG5.usuario (
   id_usuario INT NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(30) NOT NULL,
   correo varchar(30) NOT NULL,
+  username VARCHAR (30) NOT NULL,
   telefono VARCHAR(30),
-  contrasena VARCHAR(30) NOT NULL,
+  password VARCHAR(250) NOT NULL,
   id_rol INT,
   PRIMARY KEY (id_usuario),
   foreign key fk_rol_usuario (id_rol) references rol(id_rol))
 ENGINE = InnoDB 
 DEFAULT CHARACTER SET = utf8mb4;
 
-INSERT INTO pasteleriaG5.usuario(id_usuario,nombre,correo,contrasena,id_rol) VALUES
-(1,"TEST ADMIN","tojoalgu@gmail.com","pass123",1),(2,"TEST CLIENTE","cliente@gmail.com","cliente123",2);
+INSERT INTO pasteleriaG5.usuario(nombre,correo, username, password,id_rol) VALUES
+("TEST ADMIN","tojoalgu@gmail.com","admin",'$2a$10$P1.w58XvnaYQUQgZUCk4aO/RTRl8EValluCqB3S2VMLTbRt.tlre.',1),
+("TEST CLIENTE","cliente@gmail.com","cliente",'$2a$10$GkEj.ZzmQa/aEfDmtLIh3udIH5fMphx/35d0EYeqZL5uzgCJ0lQRi',2);
 
 SELECT * FROM pasteleriaG5.usuario;
 

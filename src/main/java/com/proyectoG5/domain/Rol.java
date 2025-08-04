@@ -13,6 +13,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 import lombok.Data;
+import com.proyectoG5.domain.Usuario;
 
 @Data
 @Entity
@@ -26,6 +27,11 @@ public class Rol implements Serializable{
     @Column(name="id_rol")
     private Long id_rol;
     private String nombre;
+    @OneToMany
+    @JoinColumn(name="id_rol")
+    List<Usuario> usuarios;
+    
+
      
     public Rol() {
     }

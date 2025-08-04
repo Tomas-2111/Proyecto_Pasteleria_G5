@@ -27,7 +27,7 @@ public class UsuarioServiceImpl implements UsuarioService {
     @Transactional(readOnly=true)
     public Usuario getUsuarioByPass(Usuario usuario)
     {
-        return usuarioDao.findByCorreoAndContrasena(usuario.getCorreo(),usuario.getContrasena()).orElse(null);
+        return usuarioDao.findByCorreoAndPassword(usuario.getCorreo(),usuario.getPassword()).orElse(null);
         
     }
     

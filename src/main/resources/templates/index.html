@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extrasspringsecurity6">
 <head>
     <title>Que Arte Pastelería</title>
 
@@ -216,9 +217,9 @@
         
         <div class="iconos-header">
         <a href="#"><i class="fas fa-heart"></i></a>
-        <a href="#"><i class="fas fa-shopping-cart"></i></a>
+        <a href="#" sec:authorize='hasRole("CLIENTE")'><i class="fas fa-shopping-cart"></i></a>
         <a href="#"><i class="fas fa-search"></i></a>
-        <a href="/usuario/login"><i class="fas fa-user"></i></a>
+        <a href="/login"><i class="fas fa-user"></i></a>
 
 
 

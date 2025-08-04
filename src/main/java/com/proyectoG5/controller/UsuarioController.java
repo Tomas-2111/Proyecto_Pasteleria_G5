@@ -35,37 +35,37 @@ public String mostrarLogin(Model model) {
     
 
     // Valida los datos del usuario
-    @PostMapping("/validation")
-    public String validarLogin(Usuario usuario, RedirectAttributes redirectAttributes) {
-        Usuario usuarioValidado = usuarioService.getUsuarioByPass(usuario);
-
-        if (usuarioValidado == null) {
-            // Si la validación falla, añadimos un mensaje flash antes de redirigir.
-            redirectAttributes.addFlashAttribute(
-                "error", 
-                "El correo o la contraseña son incorrectos."
-            );
-            return "redirect:/usuario/login";
-        } else {
-            return "redirect:/"; // redirige al inicio u otra vista
-        }
-    }
-    
-    
-     @PostMapping("/register")
-    public String registrar(Usuario usuario,  RedirectAttributes redirectAttributes){
-       
-        if(usuario.getCorreo()!=""&&usuarioService.getUsuarioByCorreo(usuario)==null){
-            usuario.setIdRol(2);
-            usuarioService.save(usuario);
-            return "redirect:/";
-        }else{
-            redirectAttributes.addFlashAttribute(
-                "errorRegistro", 
-                "El correo ya se encuentra registrado"
-            );
-           return "redirect:/usuario/login"; 
-        }
-        
-    }
+//    @PostMapping("/validation")
+//    public String validarLogin(Usuario usuario, RedirectAttributes redirectAttributes) {
+//        Usuario usuarioValidado = usuarioService.getUsuarioByPass(usuario);
+//
+//        if (usuarioValidado == null) {
+//            // Si la validación falla, añadimos un mensaje flash antes de redirigir.
+//            redirectAttributes.addFlashAttribute(
+//                "error", 
+//                "El correo o la contraseña son incorrectos."
+//            );
+//            return "redirect:/usuario/login";
+//        } else {
+//            return "redirect:/"; // redirige al inicio u otra vista
+//        }
+//    }
+//    
+//    
+//     @PostMapping("/register")
+//    public String registrar(Usuario usuario,  RedirectAttributes redirectAttributes){
+//       
+//        if(usuario.getCorreo()!=""&&usuarioService.getUsuarioByCorreo(usuario)==null){
+//            usuario.setIdRol(2);
+//            usuarioService.save(usuario);
+//            return "redirect:/";
+//        }else{
+//            redirectAttributes.addFlashAttribute(
+//                "errorRegistro", 
+//                "El correo ya se encuentra registrado"
+//            );
+//           return "redirect:/usuario/login"; 
+//        }
+//        
+//    }
 }

@@ -29,20 +29,24 @@ public class Usuario implements Serializable{
     private Long idUsuario;
     private String nombre;
     private String correo;
+    private String username;
     private String telefono;
-    private String contrasena;
-    private int idRol;
+    private String password;
 
+    
+    @ManyToOne
+    @JoinColumn(name="id_rol")
+    Rol rol;
     
     public Usuario(){
         
     }
     
-    public Usuario(String nombre, String correo, String telefono,String contrasena){
+    public Usuario(String nombre, String correo, String telefono,String password){
         this.nombre=nombre;
         this.correo=correo;
         this.telefono=telefono;
-        this.contrasena=contrasena;
+        this.password=password;
     
     }
 

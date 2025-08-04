@@ -15,8 +15,9 @@ import java.util.Optional;
         
 public interface UsuarioDao extends JpaRepository <Usuario, Long>{
     
-    Optional <Usuario> findByCorreoAndContrasena(String correo, String contrasena);
+    Optional <Usuario> findByCorreoAndPassword(String correo, String password);
     
     Optional <Usuario> findByCorreo(String correo);
-
+    
+    Usuario findByUsername(String username);
 }
