@@ -40,5 +40,12 @@ public class CotizacionPastelServiceImpl implements CotizacionPastelService{
     public void save(CotizacionPastel cotizacionPastel){
         cotizacionPastelDao.save(cotizacionPastel);
     }
+    
+    
+    @Override
+    @Transactional(readOnly=true)
+    public CotizacionPastel getCotizacionPastel(CotizacionPastel cotizacionPastel){
+        return cotizacionPastelDao.findById(cotizacionPastel.getId()).orElse(null);
+    }
 
 }

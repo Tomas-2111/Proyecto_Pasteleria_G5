@@ -50,8 +50,8 @@ UserDetailsService {
             throw new UsernameNotFoundException(username);
         }
          
-        session.removeAttribute("usuarioActivo");
-        session.setAttribute("usuarioActivo", usuario);
+        session.removeAttribute("idUsuarioActivo");
+        session.setAttribute("idUsuarioActivo", usuario.getIdUsuario());
 
 
     //Se van a recuperar los roles del usuario y se crean los roles ya como seguridad de Spring

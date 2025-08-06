@@ -36,7 +36,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                             <td>[[${cotizacionPastel.descripcion}]]</td>
                                             <td>Cotizacion Pastel</td>
                                             
-                                            <td></td></tr>
+                                            <td><a th:href="@{/cotizacionPastel/modificar/}+${cotizacionPastel.id}"
+                                                   class="btn btn-success">
+                                                    Actualizar</a></td></tr></td></tr>
                                     </tbody>
                                 </table>
                             </div>

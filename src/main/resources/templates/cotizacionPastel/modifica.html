@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head xmlns="http://www.w3.org/1999/xhtml"
+          xmlns:th="http://www.thymeleaf.org"
+          xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+        <title>Crear Cotización</title>
+    </head>
+    <body>
+
+        <h2 style="text-align: center; color: #e91e63; font-size: 2em; margin-bottom: 30px;">ELIGE Y PERSONALIZA TU QUEQUE</h2>
+
+        <form th:action="@{/cotizacionPastel/guardar}" method="post" th:object="${cotizacionPastel}" enctype="multipart/form-data">
+            <div class="container">
+                <div class="column">
+                    <input type="hidden" name="id" th:field="*{id}"/>
+                    <input type="hidden" name="idUsuario" th:field="*{idUsuario}"/>
+                   
+
+                    <div class="section">
+                        <h3>DESCRIPCION</h3>
+                        <label><input type="text" th:field="*{descripcion}" readonly></label>
+                    </div>
+
+                    <div class="section">
+                        <h3>ESTADO</h3>
+
+                        <div th:if="*{estado == 'Pendiente Revision'}">
+                            <select th:field="*{estado}"
+                                    class="form-select" 
+                                    aria-label="Default select example">
+                                <option value='Pendiente Revision' selected>Pendiente Revisión</option>
+                                <option value='En Revision'>En Revision</option>
+                                <option value='Finalizada'>Finalizada</option>
+                            </select>
+                        </div>
+                        <div th:if="*{estado == 'En Revision'}">
+                            <select th:field="*{estado}"
+                                    class="form-select" 
+                                    aria-label="Default select example">
+                                <option value='En Revision' selected>En Revision</option>
+                                <option value='Finalizada'>Finalizada</option>
+                                <option value='Pendiente Revision'>Pendiente Revision</option>
+                            </select>
+                        </div>
+                        <div th:if="*{estado == 'Finalizada'}">
+                            <select th:field="*{estado}"
+                                    class="form-select" 
+                                    aria-label="Default select example">
+                                <option value='Finalizada'selected>Finalizada</option>
+                                <option value='En Revision' >En Revision</option>
+                                <option value='Pendiente Revision'>Pendiente Revision</option>
+                            </select>
+                        </div>
+                </div>
+
+              
+            </div>
+
+            <button type="submit">COTIZAR</button>
+        </form>
+
+    </body>
+</html>

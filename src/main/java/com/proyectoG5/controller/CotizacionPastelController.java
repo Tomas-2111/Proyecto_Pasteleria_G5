@@ -70,13 +70,25 @@ public class CotizacionPastelController {
                 descripcionBuilder.append(String.join(", ",cotizacionPastel.getExtras()));
                 
         }
-        cotizacionPastel.setDescripcion(descripcionBuilder.toString().trim());
-        cotizacionPastel.setUrl_imagen(null);
-        cotizacionPastel.setEstado("Pendiente de revisión");
-        cotizacionPastel.setIdUsuario(2);
+        
+        
+        if(cotizacionPastel.getId()==null)//Si es create o modificar
+        {
+            cotizacionPastel.setDescripcion(descripcionBuilder.toString().trim());
+            cotizacionPastel.setUrl_imagen(null);
+            cotizacionPastel.setEstado("Pendiente Revision");
+            cotizacionPastel.setIdUsuario(2);
+        }
         cotizacionPastelService.save(cotizacionPastel);
         return "redirect:/cotizacionPastel/listado";
         
     }
+    
+    @GetMapping("/modificar/{id}")
+    public String cotizacionPastelModificar( CotizacionPastel cotizacionPastel, Model model) {
+        cotizacionPastel = cotizacionPastelService.getCotizacionPastel(cotizacionPastel);
+        model.addAttribute("cotizacionPastel", cotizacionPastel);
+        return "/cotizacionPastel/modifica";
+    } 
 
 }
