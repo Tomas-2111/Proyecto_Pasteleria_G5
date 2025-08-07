@@ -13,12 +13,17 @@
             <div class="container">
                 <div class="column">
                     <input type="hidden" name="id" th:field="*{id}"/>
-                    <input type="hidden" name="idUsuario" th:field="*{idUsuario}"/>
+                    <input type="hidden" name="usuario.idUsuario" th:field="*{usuario.idUsuario}"/>
                    
 
                     <div class="section">
                         <h3>DESCRIPCION</h3>
                         <label><input type="text" th:field="*{descripcion}" readonly></label>
+                    </div>
+                    
+                    <div class="section">
+                        <h3>Usuario</h3>
+                        <label><input type="text" th:field="*{usuario.nombre}" readonly></label>
                     </div>
 
                     <div class="section">

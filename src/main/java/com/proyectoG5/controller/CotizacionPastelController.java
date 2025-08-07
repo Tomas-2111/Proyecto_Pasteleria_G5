@@ -11,6 +11,7 @@ package com.proyectoG5.controller;
  */
 
 import com.proyectoG5.domain.CotizacionPastel;
+import com.proyectoG5.domain.Usuario;
 import com.proyectoG5.service.CotizacionPastelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,8 @@ public class CotizacionPastelController {
     
     @Autowired
     private CotizacionPastelService cotizacionPastelService;
+    
+    private Usuario usuario=new Usuario();
     
     @GetMapping("/listado")
     public String inicio(Model model) {
@@ -77,7 +80,8 @@ public class CotizacionPastelController {
             cotizacionPastel.setDescripcion(descripcionBuilder.toString().trim());
             cotizacionPastel.setUrl_imagen(null);
             cotizacionPastel.setEstado("Pendiente Revision");
-            cotizacionPastel.setIdUsuario(2);
+            usuario.setIdUsuario((long) 2);
+            cotizacionPastel.setUsuario(usuario);
         }
         cotizacionPastelService.save(cotizacionPastel);
         return "redirect:/cotizacionPastel/listado";

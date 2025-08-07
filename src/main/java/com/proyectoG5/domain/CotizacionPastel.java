@@ -41,7 +41,10 @@ public class CotizacionPastel implements Serializable{
     private String url_imagen;
     private String estado;
     
-    private int idUsuario;
+    @ManyToOne
+    @JoinColumn(name="id_usuario")
+    Usuario usuario;
+    
     
     public CotizacionPastel(){
         
