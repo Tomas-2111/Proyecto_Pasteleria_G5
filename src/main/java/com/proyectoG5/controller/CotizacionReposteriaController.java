@@ -30,6 +30,8 @@ public class CotizacionReposteriaController {
     
      @Autowired
     private CotizacionReposteriaService cotizacionReposteriaService;
+     
+    //private Usuario usuario=new Usuario();
     
     @GetMapping("/listado")
     public String inicio(Model model) {
@@ -42,11 +44,25 @@ public class CotizacionReposteriaController {
     
     @PostMapping("/guardar")
     public String guardarCotizacionReposteria(CotizacionReposteria cotizacionReposteria){
-        cotizacionReposteria.setEstado("Pendiente de revisión");
-        cotizacionReposteria.setIdUsuario(2);
+        if(cotizacionReposteria.getId()==null)//Si es create o modificar
+        {
+            
+            cotizacionReposteria.setEstado("Pendiente Revision");
+            //usuario.setIdUsuario((long) 2);
+            //cotizacionReposteria.setUsuario(usuario);
+        }
+        
+        
         cotizacionReposteriaService.save(cotizacionReposteria);
         return "redirect:/cotizacionReposteria/listado";
         
     }
+    
+    @GetMapping("/modificar/{id}")
+    public String cotizacionReposteriaModificar( CotizacionReposteria cotizacionReposteria, Model model) {
+        cotizacionReposteria = cotizacionReposteriaService.getCotizacionReposteria(cotizacionReposteria);
+        model.addAttribute("cotizacionReposteria", cotizacionReposteria);
+        return "/cotizacionReposteria/modifica";
+    } 
 
 }

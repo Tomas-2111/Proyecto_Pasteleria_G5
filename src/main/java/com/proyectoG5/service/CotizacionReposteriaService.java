@@ -16,6 +16,8 @@ public interface CotizacionReposteriaService {
     
     public List<CotizacionReposteria> getCotizacionesReposteria();
     
+    public CotizacionReposteria getCotizacionReposteria(CotizacionReposteria cotizacionReposteria);
+    
     public void save(CotizacionReposteria cotizacionReposteria);
 
 }

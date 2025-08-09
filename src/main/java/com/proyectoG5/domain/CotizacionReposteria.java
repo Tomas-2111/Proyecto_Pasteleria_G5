@@ -19,6 +19,7 @@ import com.proyectoG5.domain.Usuario;
 @Entity
 @Table(name="cotizacion_reposteria")
 
+
 public class CotizacionReposteria implements Serializable{
     
     private static final long serialVersionUID= 1L;
@@ -32,7 +33,9 @@ public class CotizacionReposteria implements Serializable{
     private String descripcion;
     private String estado;
     
-    private int idUsuario;
+    @ManyToOne
+    @JoinColumn(name="id_usuario")
+    Usuario usuario;
     
     public CotizacionReposteria(){
         
