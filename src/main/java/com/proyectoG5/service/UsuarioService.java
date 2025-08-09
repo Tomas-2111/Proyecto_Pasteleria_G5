@@ -22,5 +22,8 @@ public interface UsuarioService {
     public void save(Usuario usuario);
     
     public Usuario getUsuarioByCorreo(Usuario usuario0);
+       // Se obtiene un Usuario, a partir del username de un usuario
+    public Usuario getUsuarioPorUsername(String username);
+
 
 }

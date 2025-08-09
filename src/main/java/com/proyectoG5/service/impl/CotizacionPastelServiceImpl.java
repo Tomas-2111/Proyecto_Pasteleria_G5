@@ -11,17 +11,24 @@ package com.proyectoG5.service.impl;
  */
 import com.proyectoG5.dao.CotizacionPastelDao;
 import com.proyectoG5.domain.CotizacionPastel;
+import com.proyectoG5.domain.Usuario;
 import com.proyectoG5.service.CotizacionPastelService;
+import com.proyectoG5.service.UsuarioService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+
 
 @Service
 public class CotizacionPastelServiceImpl implements CotizacionPastelService{
     
     @Autowired
     private CotizacionPastelDao cotizacionPastelDao;
+    @Autowired
+    private UsuarioService usuarioService;
     
     @Override
     @Transactional(readOnly=true)
@@ -38,6 +45,25 @@ public class CotizacionPastelServiceImpl implements CotizacionPastelService{
     @Override
     @Transactional()
     public void save(CotizacionPastel cotizacionPastel){
+        //Se obtiene el usuario autenticado
+        String username;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails userDetails) {
+            username = userDetails.getUsername();
+        } else {
+            username = principal.toString();
+        }
+
+        if (username.isBlank()) {
+            return;
+        }
+
+        Usuario usuario = usuarioService.getUsuarioPorUsername(username);
+
+        if (usuario == null) {
+            return;
+        }
+        cotizacionPastel.setUsuario(usuario);
         cotizacionPastelDao.save(cotizacionPastel);
     }
     

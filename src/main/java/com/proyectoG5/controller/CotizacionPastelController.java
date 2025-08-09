@@ -80,8 +80,8 @@ public class CotizacionPastelController {
             cotizacionPastel.setDescripcion(descripcionBuilder.toString().trim());
             cotizacionPastel.setUrl_imagen(null);
             cotizacionPastel.setEstado("Pendiente Revision");
-            usuario.setIdUsuario((long) 2);
-            cotizacionPastel.setUsuario(usuario);
+            //usuario.setIdUsuario((long) 2);
+            //cotizacionPastel.setUsuario(usuario);
         }
         cotizacionPastelService.save(cotizacionPastel);
         return "redirect:/cotizacionPastel/listado";
