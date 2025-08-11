@@ -67,7 +67,7 @@ public class ProjectConfig implements WebMvcConfigurer {
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/index").setViewName("index");
         registry.addViewController("/login").setViewName("login");
-        //registry.addViewController("/registro/nuevo").setViewName("/registro/nuevo");
+        registry.addViewController("/registro/registrar").setViewName("/registro/registrar");
     }
    @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -76,6 +76,7 @@ public class ProjectConfig implements WebMvcConfigurer {
             .requestMatchers("/","/index","/errores/**","/img/**",
                     "/cotizacionPastel/**","/cotizacionReposteria/**","/cotizacionPastel/modifica","/cotizacionPastel/modificar/**",
                     "/menu","/historia","/contacto","/cotizaciones","/cotizacionReposteria/modifica/**","/cotizacionReposteria/modificar/**",
+                    "/registro/**",
                     "/js/**","/webjars/**")
             .permitAll()
             )

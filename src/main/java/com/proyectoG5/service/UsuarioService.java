@@ -24,6 +24,12 @@ public interface UsuarioService {
     public Usuario getUsuarioByCorreo(Usuario usuario0);
        // Se obtiene un Usuario, a partir del username de un usuario
     public Usuario getUsuarioPorUsername(String username);
+    
+    // Se obtiene un Usuario, a partir del username y el password de un usuario
+    public Usuario getUsuarioPorUsernameOCorreo(String username, String correo);
+    
+    // Se valida si existe un Usuario considerando el username
+    public boolean existeUsuarioPorUsernameOCorreo(String username, String correo);
 
 
 }

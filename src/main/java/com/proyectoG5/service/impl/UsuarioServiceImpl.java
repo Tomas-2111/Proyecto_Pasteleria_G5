@@ -46,6 +46,18 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
     
     @Override
+    @Transactional(readOnly = true)
+    public Usuario getUsuarioPorUsernameOCorreo(String username, String correo) {
+        return usuarioDao.findByUsernameOrCorreo(username, correo);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public boolean existeUsuarioPorUsernameOCorreo(String username, String correo) {
+        return usuarioDao.existsByUsernameOrCorreo(username, correo);
+    }
+    
+    @Override
     @Transactional()
     public void save(Usuario usuario){
         usuarioDao.save(usuario);
