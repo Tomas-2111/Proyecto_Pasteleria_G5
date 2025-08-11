@@ -213,13 +213,22 @@
     <header>
          <img src="/img/logo1.png" alt="Logo Que Arte" class="icono">
         <h1>Que Arte Pastelería</h1>
-        <div class="subtitulo">Una experiencia de arte y sabor</div>
+        <div >Una experiencia de arte y sabor</div>
         
         <div class="iconos-header">
-        <a href="#"><i class="fas fa-heart"></i></a>
-        <a href="#" sec:authorize='hasRole("CLIENTE")'><i class="fas fa-shopping-cart"></i></a>
-        <a href="#"><i class="fas fa-search"></i></a>
-        <a href="/login"><i class="fas fa-user"></i></a>
+            <a href="#"><i class="fas fa-heart"></i></a>
+            <a href="#" sec:authorize='hasRole("CLIENTE")'><i class="fas fa-shopping-cart"></i></a>
+            <a href="#"><i class="fas fa-search"></i></a>
+            <a sec:authorize="!isAuthenticated()" href="/login"><i class="fas fa-user"></i></a>
+            <div sec:authorize="isAuthenticated()">
+                <span class="subtitulo" sec:authentication="name">Santi</span>
+                <form method="post" th:action="@{/logout}">
+                    <button>
+                        <i class="fas fa-sign-out"></i>
+                    </button>
+                </form>
+            </div>
+           
 
 
 
