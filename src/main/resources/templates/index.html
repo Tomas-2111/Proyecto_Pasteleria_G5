@@ -217,7 +217,8 @@
         
         <div class="iconos-header">
             <a href="#"><i class="fas fa-heart"></i></a>
-            <a href="#" sec:authorize='hasRole("CLIENTE")'><i class="fas fa-shopping-cart"></i></a>
+            <a sec:authorize='hasRole("CLIENTE")'th:href="@{/cotizacionPastel/listadoUsuario}"><i class="fas fa-shopping-cart"></i></a>
+            <a sec:authorize='hasRole("ADMIN")'th:href="@{/cotizacionPastel/listado}"><i class="fas fa-shopping-cart"></i></a>
             <a href="#"><i class="fas fa-search"></i></a>
             <a sec:authorize="!isAuthenticated()" href="/login"><i class="fas fa-user"></i></a>
             <div sec:authorize="isAuthenticated()">

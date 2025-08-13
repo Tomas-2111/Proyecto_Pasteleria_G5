@@ -43,6 +43,14 @@ public class CotizacionPastelController {
         return "/cotizacionPastel/listado";
     }
     
+    @GetMapping("/listadoUsuario")
+    public String listadoUsuario(Model model) {
+        var cotizacionesPastel = cotizacionPastelService.getCotizacionesPastelUsuario();
+        model.addAttribute("cotizacionesPastel", cotizacionesPastel);
+        model.addAttribute("totalCotizacionesPastel", cotizacionesPastel.size());
+        return "/cotizacionPastel/listadoUsuario";
+    }
+    
     
     @PostMapping("/guardar")
     public String guardarCotizacionPastel(

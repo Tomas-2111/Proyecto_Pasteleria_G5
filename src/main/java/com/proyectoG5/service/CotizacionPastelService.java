@@ -16,6 +16,8 @@ public interface CotizacionPastelService {
     
      public List<CotizacionPastel> getCotizacionesPastel();
      
+     public List<CotizacionPastel> getCotizacionesPastelUsuario();
+     
      public CotizacionPastel getCotizacionPastel(CotizacionPastel cotizacionPastel);
      
      public void save(CotizacionPastel cotizacionPastel);

@@ -74,13 +74,17 @@ public class ProjectConfig implements WebMvcConfigurer {
         http
             .authorizeHttpRequests((request) -> request
             .requestMatchers("/","/index","/errores/**","/img/**",
-                    "/cotizacionPastel/**","/cotizacionReposteria/**","/cotizacionPastel/modifica","/cotizacionPastel/modificar/**",
+                    "/cotizacionReposteria/**",
                     "/menu","/historia","/contacto","/cotizaciones","/cotizacionReposteria/modifica/**","/cotizacionReposteria/modificar/**",
                     "/registro/**",
                     "/js/**","/webjars/**")
             .permitAll()
-            )
-            .formLogin((form) -> form
+            .requestMatchers("/cotizacionPastel/listado","/cotizacionPastel/modifica",
+             "/cotizacionPastel/modificar/**"
+            ).hasRole("ADMIN")
+            .requestMatchers("/cotizacionPastel/listadoUsuario"
+            ).hasRole("CLIENTE")
+            ).formLogin((form) -> form
             .loginPage("/login").permitAll())
             .logout((logout) -> logout.permitAll());
         return http.build();
