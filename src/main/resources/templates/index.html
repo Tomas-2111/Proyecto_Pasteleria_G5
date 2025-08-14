@@ -216,19 +216,16 @@
         <div >Una experiencia de arte y sabor</div>
         
         <div class="iconos-header">
-            <a href="#"><i class="fas fa-heart"></i></a>
             <a sec:authorize='hasRole("CLIENTE")'th:href="@{/cotizacionPastel/listadoUsuario}"><i class="fas fa-shopping-cart"></i></a>
             <a sec:authorize='hasRole("ADMIN")'th:href="@{/cotizacionPastel/listado}"><i class="fas fa-shopping-cart"></i></a>
-            <a href="#"><i class="fas fa-search"></i></a>
-            <a sec:authorize="!isAuthenticated()" href="/login"><i class="fas fa-user"></i></a>
-            <div sec:authorize="isAuthenticated()">
-                <span class="subtitulo" sec:authentication="name">Santi</span>
-                <form method="post" th:action="@{/logout}">
-                    <button>
-                        <i class="fas fa-sign-out"></i>
-                    </button>
-                </form>
-            </div>
+            <a sec:authorize="!isAuthenticated()" th:href="@{/login}"><i class="fas fa-user"></i></a>
+            <span sec:authorize="isAuthenticated()" class="subtitulo" sec:authentication="name">Santi</span>
+            <form sec:authorize="isAuthenticated()" method="post" th:action="@{/logout}">
+                <button>
+                    <i class="fas fa-sign-out"></i>
+                </button>
+            </form>
+
            
 
 
@@ -246,7 +243,8 @@
     <nav>
         <a href="/">Inicio</a>
         <a href="/menu">Menú</a>
-        <a href="/cotizaciones">Cotizaciones</a>
+        <a href="/cotizaciones" sec:authorize="isAuthenticated()">Cotizaciones</a>
+        <a th:href="@{/login}" sec:authorize="!isAuthenticated()">Cotizaciones</a>
         <a href="/contacto">Contacto</a>
         <a href="/historia">Historia</a>
     </nav>
