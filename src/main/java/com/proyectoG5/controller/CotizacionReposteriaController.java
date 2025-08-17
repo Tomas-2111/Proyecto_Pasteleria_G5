@@ -41,6 +41,12 @@ public class CotizacionReposteriaController {
         return "/cotizacionReposteria/listado";
     }
     
+    @GetMapping("/nueva")
+    public String nuevaReposteria() {
+       
+        return "/cotizacionReposteria/nueva";
+    }
+    
     
     @PostMapping("/guardar")
     public String guardarCotizacionReposteria(CotizacionReposteria cotizacionReposteria){
@@ -54,7 +60,7 @@ public class CotizacionReposteriaController {
         
         
         cotizacionReposteriaService.save(cotizacionReposteria);
-        return "redirect:/cotizacionReposteria/listado";
+        return "redirect:/index";
         
     }
     

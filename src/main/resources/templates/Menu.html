@@ -9,218 +9,198 @@
     <!-- Iconos de redes sociales -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
-        body {
-            background-color: #ffffff; /* ahora blanco */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+    <style>
+            body {
+                background-color: #ffffff; /* ahora blanco */
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
 
-        header {
-            background-color: #c5d5a5; /* nuevo verde */
-            padding: 20px;
-            text-align: center;
-            border-bottom: 2px solid #a3d9a5;
-            position: relative; /* necesario para los íconos */
-        }
-        .iconos-header {
-            position: absolute;
-            top: 25px;
-            right: 25px;
-        }
+            header {
+                background-color: #c5d5a5; /* nuevo verde */
+                padding: 20px;
+                text-align: center;
+                border-bottom: 2px solid #a3d9a5;
+                position: relative; /* necesario para los íconos */
+            }
+            .iconos-header {
+                position: absolute;
+                top: 25px;
+                right: 25px;
+            }
 
-        .iconos-header a {
-            color: #333;
-            margin-left: 15px;
-            font-size: 18px;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+            .iconos-header a {
+                color: #333;
+                margin-left: 15px;
+                font-size: 18px;
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
 
-        .iconos-header a:hover {
-            color: #7a9e4b; /* un verde más oscuro al pasar el mouse */
-        }
-
-
-        h1 {
-            font-family: 'Rochester', cursive;
-            font-size: 50px;
-            margin: 0;
-            display: inline-block;
-            vertical-align: middle;
-            color: #333;
-        }
-
-        .subtitulo {
-            font-family: 'Jacques Francois', serif;
-            font-size: 18px;
-            color: #444;
-            margin-top: 5px;
-        }
-
-        nav {
-            background-color: #ffffff; /* antes era verde, ahora blanco */
-            padding: 10px;
-            text-align: center;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #333;
-            background-color: #c5d5a5;
-            padding: 10px 20px;
-            margin: 5px;
-            border-radius: 5px;
-            font-weight: bold;
-            border: 1px solid #a0dca2;
-            transition: background-color 0.3s ease;
-        }
-        
-        .lineas-decorativas {
-            width: 100%;
-            margin-top: 10px;
-            margin-bottom: 10px; /* NUEVO */
-        }
+            .iconos-header a:hover {
+                color: #7a9e4b; /* un verde más oscuro al pasar el mouse */
+            }
 
 
-
-
-
-
-        .linea {
-            height: 10px;
-            width: 100%;
-        }
-
-
-        nav a:hover {
-            background-color: #d3f9d8;
-        }
-
-
-
-
-
-
-        
-        .banner-estilo-secundario {
-            text-align: center;
-            margin: 40px 0 30px 0;
-        }
-
-
-
-
-
-
-
-        .contenido {
-            text-align: center;
-            padding: 50px;
-        }
-
-        .icono {
-                width: 120px;
-                height: auto;
+            h1 {
+                font-family: 'Rochester', cursive;
+                font-size: 50px;
+                margin: 0;
+                display: inline-block;
                 vertical-align: middle;
-                margin-right: 10px;
-        }
+                color: #333;
+            }
 
-        footer {
-            background-color: #c5d5a5;
-            padding: 30px 20px 20px 20px; /* más espacio arriba */
-            text-align: center;
-            border-top: 1px solid #ccc;
-        }
+            .subtitulo {
+                font-family: 'Jacques Francois', serif;
+                font-size: 18px;
+                color: #444;
+                margin-top: 5px;
+            }
+
+            nav {
+                background-color: #ffffff; /* antes era verde, ahora blanco */
+                padding: 10px;
+                text-align: center;
+            }
+
+            nav a {
+                text-decoration: none;
+                color: #333;
+                background-color: #c5d5a5;
+                padding: 10px 20px;
+                margin: 5px;
+                border-radius: 5px;
+                font-weight: bold;
+                border: 1px solid #a0dca2;
+                transition: background-color 0.3s ease;
+            }
+
+            .lineas-decorativas {
+                width: 100%;
+                margin-top: 10px;
+                margin-bottom: 10px; /* NUEVO */
+            }
 
 
-        .redes-sociales a {
-            color: #444;
-            font-size: 24px;
-            margin: 0 15px;
-            text-decoration: none;
-        }
 
-        .politicas {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #333;
-        }
-        
-        .contenedor-menu {
-            display: flex;
-            justify-content: center;
-            align-items: stretch;
-            gap: 20px;
-            padding: 40px 20px;
-            flex-wrap: wrap;
-        }
 
-        .item-menu {
-            position: relative;
-            width: 300px;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
 
-        .item-menu img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border: 3px solid #f4b5c3;
-            border-radius: 10px;
-        }
 
-        .banner-texto {
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            font-family: 'Jacques Francois', serif;
-            font-size: 20px;
-            padding: 10px 20px;
-            border-radius: 8px;
-            white-space: nowrap;
-        }
+            .linea {
+                height: 10px;
+                width: 100%;
+            }
 
-        
-        
+
+            nav a:hover {
+                background-color: #d3f9d8;
+            }
+
+
+
+
+
+
+
+            .banner-estilo-secundario {
+                text-align: center;
+                margin: 40px 0 30px 0;
+            }
+
+
+
+
+
+
+
+            .contenido {
+                text-align: center;
+                padding: 50px;
+            }
+
+            .icono {
+                    width: 120px;
+                    height: auto;
+                    vertical-align: middle;
+                    margin-right: 10px;
+            }
+
+            footer {
+                background-color: #c5d5a5;
+                padding: 30px 20px 20px 20px; /* más espacio arriba */
+                text-align: center;
+                border-top: 1px solid #ccc;
+            }
+
+
+            .redes-sociales a {
+                color: #444;
+                font-size: 24px;
+                margin: 0 15px;
+                text-decoration: none;
+            }
+
+            .politicas {
+                margin-top: 10px;
+                font-size: 14px;
+                color: #333;
+            }
+
+            .contenedor-menu {
+                display: flex;
+                justify-content: center;
+                align-items: stretch;
+                gap: 20px;
+                padding: 40px 20px;
+                flex-wrap: wrap;
+            }
+
+            .item-menu {
+                position: relative;
+                width: 300px;
+                overflow: hidden;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+
+            .item-menu img {
+                width: 100%;
+                height: 220px;
+                object-fit: cover;
+                border: 3px solid #f4b5c3;
+                border-radius: 10px;
+            }
+
+            .banner-texto {
+                position: absolute;
+                bottom: 15px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: rgba(0, 0, 0, 0.5);
+                color: #fff;
+                font-family: 'Jacques Francois', serif;
+                font-size: 20px;
+                padding: 10px 20px;
+                border-radius: 8px;
+                white-space: nowrap;
+            }
+
+
+
     </style>
 </head>
 <body>
 
-    <header>
-         <img src="/img/logo1.png" alt="Logo Que Arte" class="icono">
-        <h1>Que Arte Pastelería</h1>
-        <div class="subtitulo">Una experiencia de arte y sabor</div>
-        
-        <div class="iconos-header">
-        <a href="#"><i class="fas fa-heart"></i></a>
-        <a href="#"><i class="fas fa-shopping-cart"></i></a>
-        <a href="#"><i class="fas fa-search"></i></a>
-        <a href="/usuario/login"><i class="fas fa-user"></i></a>
+    <header th:replace="~{layout/plantilla :: header}">
 
-
-        </div>
     </header>
     
-    <div class="lineas-decorativas">
-    <div class="linea" style="background-color: #f4b5c3;"></div>
-    <div class="linea" style="background-color: #ffffff;"></div>
-    <div class="linea" style="background-color: #c5d5a5;"></div>
-    </div>
+    <div class="lineas-decorativas" th:replace="~{layout/plantilla :: lineas-decorativas}"/>
 
-    <nav>
-        <a href="/">Inicio</a>
-        <a href="/productos" style="background-color:#7a9e4b; color:#fff;">Menú</a>
-        <a href="/cotizaciones">Cotizaciones</a>
-        <a href="/contacto">Contacto</a>
-        <a href="/historia">Historia</a>
-    </nav>
+
+    <nav th:replace="~{layout/plantilla :: nav}"/>
 
     <section class="contenedor-menu">
         <div class="item-menu">
@@ -237,19 +217,8 @@
         </div>
     </section>
 
-    <footer>
-        <div class="redes-sociales">
-            <a href="https://api.whatsapp.com/send/?phone=%2B50683491054&text&type=phone_number&app_absent=0" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://www.instagram.com/queartepasteleria?igsh=MXd3NnE2N3V1cGRlMw==" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/share/1DpGRVcZVK/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        </div>
+    <footer th:replace="~{layout/plantilla :: footer}">
 
-        <div class="politicas">
-            Políticas de privacidad &nbsp;&nbsp;&nbsp;
-            Políticas de devoluciones &nbsp;&nbsp;&nbsp;
-            Políticas de entrega &nbsp;&nbsp;&nbsp;
-            Términos y Condiciones de servicio
-        </div>
     </footer>
 
 </body>

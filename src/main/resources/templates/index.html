@@ -1,305 +1,59 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extrasspringsecurity6">
-<head>
-    <title>Que Arte Pastelería</title>
-
-    <!-- Fuentes personalizadas -->
-    <link href="https://fonts.googleapis.com/css2?family=Rochester&family=Jacques+Francois&display=swap" rel="stylesheet">
-
-    <!-- Iconos de redes sociales -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <style>
-        body {
-            background-color: #ffffff; /* ahora blanco */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: #c5d5a5; /* nuevo verde */
-            padding: 20px;
-            text-align: center;
-            border-bottom: 2px solid #a3d9a5;
-            position: relative; /* necesario para los íconos */
-        }
-        .iconos-header {
-            position: absolute;
-            top: 25px;
-            right: 25px;
-        }
-
-        .iconos-header a {
-            color: #333;
-            margin-left: 15px;
-            font-size: 18px;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .iconos-header a:hover {
-            color: #7a9e4b; /* un verde más oscuro al pasar el mouse */
-        }
+    <head th:replace="~{layout/plantilla :: head}">
 
 
-        h1 {
-            font-family: 'Rochester', cursive;
-            font-size: 50px;
-            margin: 0;
-            display: inline-block;
-            vertical-align: middle;
-            color: #333;
-        }
+    </head>
+    <body>
 
-        .subtitulo {
-            font-family: 'Jacques Francois', serif;
-            font-size: 18px;
-            color: #444;
-            margin-top: 5px;
-        }
+        <header th:replace="~{layout/plantilla :: header}"/>
 
-        nav {
-            background-color: #ffffff; /* antes era verde, ahora blanco */
-            padding: 10px;
-            text-align: center;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #333;
-            background-color: #c5d5a5;
-            padding: 10px 20px;
-            margin: 5px;
-            border-radius: 5px;
-            font-weight: bold;
-            border: 1px solid #a0dca2;
-            transition: background-color 0.3s ease;
-        }
-        
-        .lineas-decorativas {
-            width: 100%;
-            margin-top: 10px;
-            margin-bottom: 10px; /* NUEVO */
-        }
-        
-        .contenedor-imagenes-secundarias {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: nowrap; /* ← FORZAR UNA SOLA FILA */
-            overflow-x: auto;   /* ← SCROLL SI NO CABE EN PANTALLA */
-            padding: 0 20px;
-        }
-
-        .imagen-galeria-con-banner {
-            position: relative;
-            max-width: 600px;
-            width: 100%;
-            flex: 0 0 auto;
-            margin: 0 auto;
-        }
+        <div class="lineas-decorativas" th:replace="~{layout/plantilla :: lineas-decorativas}"/>
 
 
+        <nav th:replace="~{layout/plantilla :: nav}" />
 
-        .linea {
-            height: 10px;
-            width: 100%;
-        }
-
-
-        nav a:hover {
-            background-color: #d3f9d8;
-        }
-
-
-        .imagen-banner {
-            width: 90%; /* o 70% */
-            max-height: 250px;
-            object-fit: contain; /* cambia cover por contain */
-            display: block;
-            margin: 0 auto;
-        }
-
-
-        .mensaje-banner {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 30px;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 15px 30px;
-            border-radius: 10px;
-            font-family: 'Jacques Francois', serif;
-        }
-        
-        .banner-estilo-secundario {
-            text-align: center;
-            margin: 40px 0 30px 0;
-        }
-
-
-
-        .imagen-galeria-con-banner img {
-            width: 100%;
-            border-radius: 10px;
-            border: 3px solid #f4b5c3;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            object-fit: cover;
-        }
-
-        .mensaje-banner-secundario {
-            position: absolute;
-            bottom: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            font-family: 'Jacques Francois', serif;
-            font-size: 22px;
-            padding: 12px 25px;
-            border-radius: 8px;
-            white-space: nowrap;
-        }
-        
-        .imagen-productos-temporada {
-            text-align: center;
-            margin: 40px 0;
-        }
-
-
-
-
-        .contenido {
-            text-align: center;
-            padding: 50px;
-        }
-
-        .icono {
-                width: 120px;
-                height: auto;
-                vertical-align: middle;
-                margin-right: 10px;
-        }
-
-        footer {
-            background-color: #c5d5a5;
-            padding: 30px 20px 20px 20px; /* más espacio arriba */
-            text-align: center;
-            border-top: 1px solid #ccc;
-        }
-
-
-        .redes-sociales a {
-            color: #444;
-            font-size: 24px;
-            margin: 0 15px;
-            text-decoration: none;
-        }
-
-        .politicas {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #333;
-        }
-    </style>
-
-</head>
-<body>
-
-    <header>
-         <img src="/img/logo1.png" alt="Logo Que Arte" class="icono">
-        <h1>Que Arte Pastelería</h1>
-        <div >Una experiencia de arte y sabor</div>
-        
-        <div class="iconos-header">
-            <a sec:authorize='hasRole("CLIENTE")'th:href="@{/cotizacionPastel/listadoUsuario}"><i class="fas fa-shopping-cart"></i></a>
-            <a sec:authorize='hasRole("ADMIN")'th:href="@{/cotizacionPastel/listado}"><i class="fas fa-shopping-cart"></i></a>
-            <a sec:authorize="!isAuthenticated()" th:href="@{/login}"><i class="fas fa-user"></i></a>
-            <span sec:authorize="isAuthenticated()" class="subtitulo" sec:authentication="name">Santi</span>
-            <form sec:authorize="isAuthenticated()" method="post" th:action="@{/logout}">
-                <button>
-                    <i class="fas fa-sign-out"></i>
-                </button>
-            </form>
-
-           
-
-
-
-        </div>
-    </header>
-    
-    <div class="lineas-decorativas">
-    <div class="linea" style="background-color: #f4b5c3;"></div>
-    <div class="linea" style="background-color: #ffffff;"></div>
-    <div class="linea" style="background-color: #c5d5a5;"></div>
-    </div>
-
-
-    <nav>
-        <a href="/">Inicio</a>
-        <a href="/menu">Menú</a>
-        <a href="/cotizaciones" sec:authorize="isAuthenticated()">Cotizaciones</a>
-        <a th:href="@{/login}" sec:authorize="!isAuthenticated()">Cotizaciones</a>
-        <a href="/contacto">Contacto</a>
-        <a href="/historia">Historia</a>
-    </nav>
-    
-    <!-- Imagen destacada con mensaje -->
-    <section class="banner-estilo-secundario">
-    <div class="imagen-galeria-con-banner">
-        <img src="img/484048741_1085332370276618_6805557842764513448_n.jpg" alt="Queque personalizado">
-        <div class="mensaje-banner-secundario">Personaliza tu queque con nosotros</div>
-    </div>
-    </section>
-
-    
-    <section class="galeria-secundaria">
-        <div class="contenedor-imagenes-secundarias">
+        <!-- Imagen destacada con mensaje -->
+        <section class="banner-estilo-secundario">
             <div class="imagen-galeria-con-banner">
-                <img src="img/para queques.jpg" alt="Menú">
-                <div class="mensaje-banner-secundario">Menú</div>
+                <img src="img/484048741_1085332370276618_6805557842764513448_n.jpg" alt="Queque personalizado">
+                <div   sec:authorize="!isAuthenticated()" class="mensaje-banner-secundario"><a th:href="@{/login}">Personaliza tu queque con nosotros</a></div>
+                <div   sec:authorize="isAuthenticated()" class="mensaje-banner-secundario"><a th:href="@{/cotizacionPastel/listado}">Personaliza tu queque con nosotros</a></div>
             </div>
+        </section>
+
+
+        <section class="galeria-secundaria">
+            <div class="contenedor-imagenes-secundarias">
+                <div class="imagen-galeria-con-banner">
+                    <img src="img/para queques.jpg" alt="Menú">
+                    <div class="mensaje-banner-secundario">Menú</div>
+                </div>
+                <div class="imagen-galeria-con-banner">
+                    <img src="img/486707253_1096767099133145_4528489737006875186_n.jpg" alt="Blog">
+                    <div class="mensaje-banner-secundario">Blog</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="imagen-productos-temporada">
             <div class="imagen-galeria-con-banner">
-                <img src="img/486707253_1096767099133145_4528489737006875186_n.jpg" alt="Blog">
-                <div class="mensaje-banner-secundario">Blog</div>
+                <img src="img/Captura de pantalla 2025-06-12 a la(s) 14.56.55.png" alt="Productos de temporada">
+                <div class="mensaje-banner-secundario">Productos de temporada</div>
             </div>
-        </div>
-    </section>
-    
-    <section class="imagen-productos-temporada">
-        <div class="imagen-galeria-con-banner">
-            <img src="img/Captura de pantalla 2025-06-12 a la(s) 14.56.55.png" alt="Productos de temporada">
-            <div class="mensaje-banner-secundario">Productos de temporada</div>
-        </div>
-    </section>
+        </section>
 
-    
-    
-    <div class="contenido">
-        <h2>Bienvenido a nuestra pastelería</h2>
-        <p>Descubre nuestros productos y el talento detrás de cada pastel.</p>
-    </div>
 
-    <!-- Pie de página -->
-    <footer>
-        <div class="redes-sociales">
-            <a href="https://api.whatsapp.com/send/?phone=%2B50683491054&text&type=phone_number&app_absent=0" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://www.instagram.com/queartepasteleria?igsh=MXd3NnE2N3V1cGRlMw==" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/share/1DpGRVcZVK/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook-f"></i></a>
+
+        <div class="contenido">
+            <h2>Bienvenido a nuestra pastelería</h2>
+            <p>Descubre nuestros productos y el talento detrás de cada pastel.</p>
         </div>
 
-        <div class="politicas">
-            Políticas de privacidad &nbsp;&nbsp;&nbsp;
-            Políticas de devoluciones &nbsp;&nbsp;&nbsp;
-            Políticas de entrega &nbsp;&nbsp;&nbsp;
-            Términos y Condiciones de servicio
-        </div>
-    </footer>
+        <!-- Pie de página -->
+        <footer th:replace="~{layout/plantilla :: footer}"/>
 
-</body>
+
+    </body>
 </html>

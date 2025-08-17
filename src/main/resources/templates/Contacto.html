@@ -160,30 +160,16 @@
     </style>
 </head>
 <body>
-    <header>
-        <img src="/img/logo1.png" alt="Logo Que Arte" class="icono">
-        <h1>Que Arte Pastelería</h1>
-        <div class="subtitulo">Una experiencia de arte y sabor</div>
-        <div class="iconos-header">
-            <a href="#"><i class="fas fa-heart"></i></a>
-            <a href="#"><i class="fas fa-shopping-cart"></i></a>
-            <a href="#"><i class="fas fa-search"></i></a>
-            <a href="/usuario/login"><i class="fas fa-user"></i></a>
-        </div>
+    <header th:replace="~{layout/plantilla :: header}">
+
     </header>
 
-    <div class="lineas-decorativas">
-        <div class="linea" style="background-color: #f4b5c3;"></div>
-        <div class="linea" style="background-color: #ffffff;"></div>
-        <div class="linea" style="background-color: #c5d5a5;"></div>
+    <div class="lineas-decorativas" th:replace="~{layout/plantilla :: lineas-decorativas}">
+
     </div>
 
-    <nav>
-        <a href="/">Inicio</a>
-        <a href="/menu">Menú</a>
-        <a href="/cotizaciones">Cotizaciones</a>
-        <a href="/contacto">Contacto</a>
-        <a href="/historia">Historia</a>
+    <nav th:replace="~{layout/plantilla :: nav}">
+
     </nav>
 
     <section class="contacto">
@@ -208,18 +194,8 @@
         
     </section>
 
-    <footer>
-        <div class="redes-sociales">
-            <a href="https://api.whatsapp.com/send/?phone=%2B50683491054" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://www.instagram.com/queartepasteleria" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/share/1DpGRVcZVK" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        </div>
-        <div class="politicas">
-            Políticas de privacidad &nbsp;&nbsp;&nbsp;
-            Políticas de devoluciones &nbsp;&nbsp;&nbsp;
-            Políticas de entrega &nbsp;&nbsp;&nbsp;
-            Términos y Condiciones de servicio
-        </div>
+    <footer th:replace="~{layout/plantilla :: footer}">
+
     </footer>
 </body>
 </html>
