@@ -231,25 +231,51 @@
 
 
         <section class="form-cotizacion">
-            <div class="formulario">
-                <h2>Solicitud de Cotización</h2>
-                <form method="POST" th:action="@{/cotizacionReposteria/guardar}"  th:object="${cotizacionReposteria}" enctype="multipart/form-data">
-                    <h3>Tipo Reposteria</h3>
-                    <label><input type="radio" name="tipoReposteria" value="Dulce" required>DULCE</label>
-                    <label><input type="radio" name="tipoReposteria" value="Salada">SALADA</label>
-                    <label><input type="radio" name="tipoReposteria" value="Mixta"> MIXTA</label>
-                    <h3>Cantidad</h3>
-                    <input type="number" name="cantidad" required/>
-                    <h3>Detalle</h3>
-                    <textarea name="descripcion" rows="5" placeholder="Detalles del pedido..." required></textarea>
+            <form method="POST" th:action="@{/cotizacionPastel/guardar}"  th:object="${cotizacionPastel}" enctype="multipart/form-data">
+                <div class="col-1">
+                    <h2>Solicitud de Cotización</h2>
 
-                    <button type="submit" class="btn-cotizar">Cotizar</button>
-                </form>
-            </div>
+                    <h3>Tamaño del Pastel</h3>
+                    <label><input type="radio" name="tamano" value="GRANDE 40 PORCIONES" required> GRANDE 40 PORCIONES</label>
+                    <label><input type="radio" name="tamano" value="MEDIANO 20 PORCIONES"> MEDIANO 20 PORCIONES</label>
+                    <label><input type="radio" name="tamano" value="PEQUEÑO 10 PORCIONES"> PEQUEÑO 10 PORCIONES</label>
+                    <h3>Sabor del Pastel</h3>
+                    <label><input type="radio" name="sabor" value="CHIA - LIMON" required> CHIA - LIMON</label>
+                    <label><input type="radio" name="sabor" value="VAINILLA - NARANJA"> VAINILLA - NARANJA</label>
+                    <label><input type="radio" name="sabor" value="CHOCOLATE"> CHOCOLATE</label>
+                    <label><input type="radio" name="sabor" value="REDVELVET"> REDVELVET</label>
+                    <label><input type="radio" name="sabor" value="HIGOS"> HIGOS</label>
+                    <label><input type="radio" name="sabor" value="COCO"> COCO</label>
+                    <label><input type="radio" name="sabor" value="MARACUYA"> MARACUYA</label>
+                    <h3>Relleno del pastel</h3>
+                    <label><input type="radio" name="relleno" value="LIMON" required> LIMON</label>
+                    <label><input type="radio" name="relleno" value="NUTELLA"> NUTELLA</label>
+                    <label><input type="radio" name="relleno" value="CHOCOLATE"> CHOCOLATE</label>
+                    <label><input type="radio" name="relleno" value="FRESAS"> FRESAS</label>
+                    <label><input type="radio" name="relleno" value="HIGOS"> HIGOS</label>
+                    <label><input type="radio" name="relleno" value="COCO"> COCO</label>
+                    <label><input type="radio" name="relleno" value="DULCE DE LECHE"> DULCE DE LECHE</label>
 
-            <div class="imagen-cotizacion">
-                <img src="../../static/img/ChatGPT Image 12 jun 2025, 02_49_08 p.m..png" alt="Imagen cotización"/>
-            </div>
+                </div>
+
+                <div class="col-2">
+                    <h3>Tipo de cubierta del pastel</h3>
+                    <label><input type="radio" name="cubierta" value="PASTA AUSTRALIANA" required> PASTA AUSTRALIANA</label>
+                    <label><input type="radio" name="cubierta" value="LUSTRE"> LUSTRE</label>
+                    <label><input type="radio" name="cubierta" value="FRUTAS O SEMILLAS"> FRUTAS O SEMILLAS</label>
+                    <h3>Ingredientes Extras</h3>
+                    <label><input type="checkbox" name="extras" value="ALMENDRAS"> ALMENDRAS</label>
+                    <label><input type="checkbox" name="extras" value="NUECES"> NUECES</label>
+                    <label><input type="checkbox" name="extras" value="FRESAS"> FRESAS</label>
+                    <label><input type="checkbox" name="extras" value="MELOCOTONES"> MELOCOTONES</label>
+                    <label><input type="checkbox" name="extras" value="ARANDANOS"> ARANDANOS</label>
+                    <label><input type="checkbox" name="extras" value="HIGOS"> HIGOS</label>
+                    <label><input type="checkbox" name="extras" value="CIRUELAS"> CIRUELAS</label>
+                    <label><input type="checkbox" name="extras" value="OTROS"> OTROS</label>
+                    
+                </div>
+                <button type="submit" class="btn-cotizar">Cotizar</button>
+            </form>
         </section>
 
         <footer th:replace="~{layout/plantilla :: footer}" >

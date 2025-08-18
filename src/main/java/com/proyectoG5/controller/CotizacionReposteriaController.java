@@ -41,6 +41,14 @@ public class CotizacionReposteriaController {
         return "/cotizacionReposteria/listado";
     }
     
+     @GetMapping("/listadoUsuario")
+    public String listadoUsuario(Model model) {
+        var cotizacionesReposteria = cotizacionReposteriaService.getCotizacionesReposteriaUsuario();
+        model.addAttribute("cotizacionesReposteria", cotizacionesReposteria);
+        model.addAttribute("totalCotizacionesReposteria", cotizacionesReposteria.size());
+        return "/cotizacionReposteria/listadoUsuario";
+    }
+    
     @GetMapping("/nueva")
     public String nuevaReposteria() {
        

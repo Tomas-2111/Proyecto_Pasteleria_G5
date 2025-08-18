@@ -41,6 +41,37 @@ public class CotizacionReposteriaServiceImpl implements CotizacionReposteriaServ
     }
     
     @Override
+    @Transactional(readOnly=true)
+    public List<CotizacionReposteria> getCotizacionesReposteriaUsuario(){
+        var lista= cotizacionReposteriaDao.findAll();
+        //Se obtiene el usuario autenticado
+        String username;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails userDetails) {
+            username = userDetails.getUsername();
+        } else {
+            username = principal.toString();
+        }
+
+        if (username.isBlank()) {
+            return null;
+        }
+
+        Usuario usuario = usuarioService.getUsuarioPorUsername(username);
+
+        if (usuario == null) {
+            return null;
+        }
+        
+        lista.removeIf(e -> (e.getUsuario().getIdUsuario()!=usuario.getIdUsuario()));
+                
+         
+        
+        return lista;
+        
+    }
+    
+    @Override
     @Transactional()
     public void save(CotizacionReposteria cotizacionReposteria){
         //Se obtiene el usuario autenticado

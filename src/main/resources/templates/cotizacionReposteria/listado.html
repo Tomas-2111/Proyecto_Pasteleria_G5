@@ -12,6 +12,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
+                        <button class="btn btn-primary" ><a class="btn btn-primary" th:href="@{/cotizacionPastel/listado}">Cotizaciones Pastel</a></button>
+                        <button class="btn btn-primary" ><a class="btn btn-primary" th:href="@{/cotizacionReposteria/listado}">Cotizaciones Reposteria</a></button>
                         <div class="card">
                             <div class="card-header">
                                 <h4>Listado test</h4>
@@ -59,34 +61,7 @@
                             </div>
                         </div>
                     </div>
-                    <h2 style="text-align: center; color: #e91e63; font-size: 2em; margin-bottom: 30px;">ELIGE Y PERSONALIZA TU QUEQUE</h2>
-
-                    <form th:action="@{/cotizacionReposteria/guardar}" method="post" th:object="${cotizacionReposteria}" enctype="multipart/form-data">
-                        <div class="container">
-                            <div class="column">
-                                <div class="section">
-                                    <h3>TIPO</h3>
-                                    <label><input type="radio" name="tipoReposteria" value="Dulce" required>DULCE</label>
-                                    <label><input type="radio" name="tipoReposteria" value="Salada">SALADA</label>
-                                    <label><input type="radio" name="tipoReposteria" value="Mixta"> MIXTA</label>
-                                </div>
-
-                                <div class="section">
-                                    <h3>CANTIDAD</h3>
-                                    <input type="number" name="cantidad" required/>
-                                </div>
-
-                                <div class="section">
-                                    <h3>DESCRIPCION</h3>
-                                    <input type="textarea" name="descripcion" required/>
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                        <button type="submit">COTIZAR</button>
-                    </form>
+                   
                 </div>
                
             </div>

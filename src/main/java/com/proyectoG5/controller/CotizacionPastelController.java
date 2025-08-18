@@ -51,6 +51,13 @@ public class CotizacionPastelController {
         return "/cotizacionPastel/listadoUsuario";
     }
     
+    @GetMapping("/nueva")
+    public String nuevaPastel() {
+       
+        return "/cotizacionPastel/nueva";
+    }
+    
+    
     
     @PostMapping("/guardar")
     public String guardarCotizacionPastel(
@@ -92,7 +99,7 @@ public class CotizacionPastelController {
             //cotizacionPastel.setUsuario(usuario);
         }
         cotizacionPastelService.save(cotizacionPastel);
-        return "redirect:/cotizacionPastel/listado";
+        return "redirect:/index";
         
     }
     

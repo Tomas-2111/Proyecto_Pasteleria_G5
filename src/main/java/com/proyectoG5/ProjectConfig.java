@@ -82,7 +82,8 @@ public class ProjectConfig implements WebMvcConfigurer {
             .requestMatchers("/cotizacionPastel/listado","/cotizacionPastel/modifica",
              "/cotizacionPastel/modificar/**"
             ).hasRole("ADMIN")
-            .requestMatchers("/cotizacionPastel/listadoUsuario"
+            .requestMatchers("/cotizacionPastel/listadoUsuario","/cotizacionReposteria/listadoUsuario","/cotizacionReposteria/nueva","/cotizacionPastel/nueva",
+                    "/cotizacionReposteria/guardar","/cotizacionPastel/guardar"
             ).hasRole("CLIENTE")
             ).formLogin((form) -> form
             .loginPage("/login").permitAll())
