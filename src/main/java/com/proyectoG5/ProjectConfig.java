@@ -74,17 +74,18 @@ public class ProjectConfig implements WebMvcConfigurer {
         http
             .authorizeHttpRequests((request) -> request
             .requestMatchers("/","/index","/errores/**","/img/**","static/img/**",
-                    "/cotizacionReposteria/**",
-                    "/menu","/historia","/contacto","/cotizaciones","/cotizacionReposteria/modifica/**","/cotizacionReposteria/modificar/**",
+                    "/menu","/historia","/contacto","/cotizaciones",
                     "/registro/**",
                     "/js/**","/webjars/**")
             .permitAll()
-            .requestMatchers("/cotizacionPastel/listado","/cotizacionPastel/modifica",
-             "/cotizacionPastel/modificar/**"
+            .requestMatchers("/cotizacionPastel/listado","/cotizacionPastel/modifica","/cotizacionReposteria/modifica",
+                    "/cotizacionPastel/modifica/**","/cotizacionReposteria/modifica/**",
+                    "/cotizacionReposteria/modificar/**","/cotizacionPastel/modificar/**","/cotizacionReposteria/listado"
             ).hasRole("ADMIN")
-            .requestMatchers("/cotizacionPastel/listadoUsuario","/cotizacionReposteria/listadoUsuario","/cotizacionReposteria/nueva","/cotizacionPastel/nueva",
-                    "/cotizacionReposteria/guardar","/cotizacionPastel/guardar"
+            .requestMatchers("/cotizacionPastel/listadoUsuario","/cotizacionReposteria/listadoUsuario"
             ).hasRole("CLIENTE")
+             .requestMatchers("/cotizacionReposteria/nueva","/cotizacionPastel/nueva","/cotizacionReposteria/guardar","/cotizacionPastel/guardar"
+            ).hasAnyRole("ADMIN","CLIENTE")
             ).formLogin((form) -> form
             .loginPage("/login").permitAll())
             .logout((logout) -> logout.permitAll());
