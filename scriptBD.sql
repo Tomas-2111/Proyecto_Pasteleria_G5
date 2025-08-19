@@ -34,7 +34,7 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 INSERT INTO pasteleriaG5.usuario(nombre,correo, username, password,id_rol) VALUES
 ("TEST ADMIN","tojoalgu@gmail.com","admin",'$2a$10$P1.w58XvnaYQUQgZUCk4aO/RTRl8EValluCqB3S2VMLTbRt.tlre.',1),
-("TEST CLIENTE","cliente@gmail.com","cliente",'$2a$10$GkEj.ZzmQa/aEfDmtLIh3udIH5fMphx/35d0EYeqZL5uzgCJ0lQRi',2);
+("TEST CLIENTE","cliente@gmail.com","cliente",'$2a$10$P1.w58XvnaYQUQgZUCk4aO/RTRl8EValluCqB3S2VMLTbRt.tlre.',2);
 
 SELECT * FROM pasteleriaG5.usuario;
 
@@ -67,4 +67,4 @@ INSERT INTO pasteleriag5.cotizacion_pastel(descripcion, id_usuario, estado) VALU
 INSERT INTO pasteleriag5.cotizacion_reposteria(tipo_reposteria, cantidad,id_usuario,estado) VALUES ("Salado",10,2,"En Revision");
 INSERT INTO pasteleriag5.cotizacion_reposteria(tipo_reposteria, cantidad,id_usuario,estado) VALUES ("Mixto",10,2,"Finalizada");
 
-SELECT * FROM pasteleriaG5.cotizacion_reposteria;
+SELECT * FROM pasteleriaG5.cotizacion_pastel;
