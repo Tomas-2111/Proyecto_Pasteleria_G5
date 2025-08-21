@@ -87,22 +87,7 @@
                 padding: 20px;
                 text-align: center;
             }
-            .mapas {
-                display: flex;
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 30px;
-            }
-            .mapas img {
-                width: 200px;
-                height: auto;
-
-            }
-            .mapas iframe {
-                border: 1px solid #ccc;
-                border-radius: 10px;
-                box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            }
+            
             .info-contacto {
                 margin-top: 30px;
                 font-size: 16px;
@@ -121,25 +106,7 @@
                 text-decoration: underline;
 
             }
-            .iconos-mapas {
-                margin-top: 30px;
-                display: flex;
-                justify-content: center;
-                gap: 30px;
-            }
-            .iconos-mapas a img {
-                width: 60px;
-                height: 60px;
-            }
-            .como-llegar {
-                text-align: center;
-                font-family: 'Source Sans 3', sans-serif;
-                font-weight: 300;
-                font-size: 20px;
-                color: #ee7171;
-                margin-top: 50px;
-                margin-bottom: 5px;
-            }
+            
             footer {
                 background-color: #c5d5a5;
                 padding: 30px 20px;
@@ -233,11 +200,13 @@
                 border-radius: 5px;
                 font-weight: bold;
                 color: #333;
+                margin-top: 50px;
                 cursor: pointer;
             }
 
             .btn-cotizar:hover {
                 background-color: #b0c78f;
+                
             }
 
             .imagen-cotizacion {
@@ -254,14 +223,25 @@
                 border-radius: 10px;
                 box-shadow: 0 2px 6px rgba(0,0,0,0.2);
             }
-            
+
             .formulario h2 {
-    background-color: #b0c78f;
-    color: white;              /* texto blanco */
-    padding: 10px 20px;
-    border-radius: 8px;
-    text-align: center;
-    margin-bottom: 20px;
+                background-color: #b0c78f;
+                color: white;              /* texto blanco */
+                padding: 10px 20px;
+                border-radius: 8px;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            
+            .textarea-detalle {
+    width: 100%;
+    max-width: 800px;
+    padding: 12px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: vertical;
+    background-color: #fdfdfd;
 }
 
 
@@ -281,9 +261,12 @@
 
         </nav>
 
-
         <section class="form-cotizacion">
-            <div class="formulario">
+            <form method="POST" 
+                  th:action="@{/cotizacionPastel/guardar}" 
+                  th:object="${cotizacionPastel}" 
+                  enctype="multipart/form-data" 
+                  onsubmit="return mostrarAlerta()">
                 <h2>Solicitud de Cotización de Repostería</h2>
                 <form method="POST" th:action="@{/cotizacionReposteria/guardar}"  th:object="${cotizacionReposteria}" enctype="multipart/form-data">
                     <h3>Tipo Repostería</h3>
@@ -293,19 +276,81 @@
                     <h3>Cantidad</h3>
                     <input type="number" name="cantidad" required/>
                     <h3>Detalle</h3>
-                    <textarea name="descripcion" rows="5" placeholder="Detalles del pedido..." required></textarea>
+<textarea name="descripcion" class="textarea-detalle" rows="5" placeholder="Detalles del pedido..." required></textarea>
+
 
                     <button type="submit" class="btn-cotizar">Cotizar</button>
                 </form>
-            </div>
+                </div>
 
-            <div class="imagen-cotizacion">
-                <img th:src="@{/img/Cotizaciones.png}" alt="Cotizaciones"/>
-            </div>
+                <div class="imagen-cotizacion">
+                    <img th:src="@{/img/Cotizaciones.png}" alt="Cotizaciones"/>
+                </div>
         </section>
 
-        <footer th:replace="~{layout/plantilla :: footer}" >
+     <script>
+  function mostrarAlerta() {
+    const modal = document.getElementById('modalConfirmacion');
+    modal.style.display = 'block';
+    return false; // Detiene el envío real del formulario
+  }
 
+  function cerrarModal() {
+    // Oculta el modal
+    document.getElementById('modalConfirmacion').style.display = 'none';
+
+    // Redirecciona a la página de inicio
+    window.location.href = '/';
+  }
+</script>
+
+        <!-- Modal personalizado -->
+        <div id="modalConfirmacion" style="display: none;
+             position: fixed;
+             z-index: 1000;
+             left: 0;
+             top: 0;
+             width: 100%;
+             height: 100%;
+             background-color: rgba(0, 0, 0, 0.4);">
+
+            <div style="background-color: #fefefe;
+                 margin: 15% auto;
+                 padding: 20px;
+                 border: 2px solid #7a9e4b;
+                 border-radius: 10px;
+                 width: 400px;
+                 text-align: center;
+                 font-family: 'Jacques Francois', serif;
+                 color: #333;
+                 background-color: #ffffff;">
+
+                <h3 style="color: #7a9e4b;">¡Cotización enviada!</h3>
+                <p>Pronto nos estaremos comunicando pronto con usted.</p>
+
+                <button onclick="cerrarModal()" style="
+                        margin-top: 20px;
+                        padding: 10px 20px;
+                        background-color: #c5d5a5;
+                        border: none;
+                        border-radius: 5px;
+                        font-weight: bold;
+                        color: #333;
+                        cursor: pointer;">
+                    Aceptar
+                </button>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <footer th:replace="~{layout/plantilla :: footer}" >
         </footer>
+
     </body>
 </html>

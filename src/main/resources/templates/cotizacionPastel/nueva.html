@@ -264,7 +264,11 @@
 
 
         <section class="form-cotizacion">
-            <form method="POST" th:action="@{/cotizacionPastel/guardar}" th:object="${cotizacionPastel}" enctype="multipart/form-data">
+            <form method="POST" 
+                  th:action="@{/cotizacionPastel/guardar}" 
+                  th:object="${cotizacionPastel}" 
+                  enctype="multipart/form-data" 
+                  onsubmit="return mostrarAlerta()">
                 <h2>Solicitud de Cotización Pasteles</h2>
 
                 <div class="formulario-tres-columnas">
@@ -322,7 +326,7 @@
                             <h3 style="color: #7a9e4b; font-family: 'Jacques Francois', serif;">Imagen de Referencia (opcional)</h3>
                             <input type="file" name="imagenReferencia" accept="image/*"
                                    style="border: 1px solid #7a9e4b; border-radius: 8px; padding: 14px 18px; background-color: #f9f9f9; width: 400px;">
-    </div>
+                        </div>
                         <button type="submit" class="btn-cotizar">Cotizar</button>
                     </div>
 
@@ -330,16 +334,64 @@
         </div>
     </section>
 
+    <script>
+        function mostrarAlerta() {
+            const modal = document.getElementById('modalConfirmacion');
+            modal.style.display = 'block';
+            return false; // Detiene el envío real del formulario
+        }
+
+        function cerrarModal() {
+            // Oculta el modal
+            document.getElementById('modalConfirmacion').style.display = 'none';
+
+            // Redirecciona a la página de inicio
+            window.location.href = '/';
+        }
+    </script>
+
+    <!-- Modal personalizado -->
+    <div id="modalConfirmacion" style="display: none;
+         position: fixed;
+         z-index: 1000;
+         left: 0;
+         top: 0;
+         width: 100%;
+         height: 100%;
+         background-color: rgba(0, 0, 0, 0.4);">
+
+        <div style="background-color: #fefefe;
+             margin: 15% auto;
+             padding: 20px;
+             border: 2px solid #7a9e4b;
+             border-radius: 10px;
+             width: 400px;
+             text-align: center;
+             font-family: 'Jacques Francois', serif;
+             color: #333;
+             background-color: #ffffff;">
+
+            <h3 style="color: #7a9e4b;">¡Cotización enviada!</h3>
+            <p>Pronto nos estaremos comunicando pronto con usted.</p>
+
+            <button onclick="cerrarModal()" style="
+                    margin-top: 20px;
+                    padding: 10px 20px;
+                    background-color: #c5d5a5;
+                    border: none;
+                    border-radius: 5px;
+                    font-weight: bold;
+                    color: #333;
+                    cursor: pointer;">
+                Aceptar
+            </button>
+        </div>
+    </div>
+
+
+
     <footer th:replace="~{layout/plantilla :: footer}" >
     </footer>
-        
-        <script>
-    function mostrarAlerta() {
-        alert("¡Cotización enviada!");
-        return true;
-    }
-</script>
-
 
 </body>
 </html>
