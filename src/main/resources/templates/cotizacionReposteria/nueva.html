@@ -169,6 +169,48 @@
                 flex-wrap: wrap;
             }
 
+
+            label {
+                display: inline-block;
+                margin: 8px 10px 8px 0;
+                font-size: 16px;
+                font-weight: 500;
+                color: #7a9e4b; /* verde olivo pastel */
+                font-family: 'Source Sans 3', sans-serif;
+            }
+
+            label input[type="radio"] {
+                appearance: none;
+                width: 16px;
+                height: 16px;
+                border: 2px solid #7a9e4b;
+                border-radius: 50%;
+                margin-right: 8px;
+                vertical-align: middle;
+                background-color: #fff;
+                transition: box-shadow 0.3s ease, border-color 0.3s ease;
+            }
+
+            label input[type="radio"]:checked {
+                background-color: #c5d5a5;
+                border-color: #7a9e4b;
+            }
+
+            label input[type="radio"]:hover {
+                box-shadow: 0 0 5px rgba(122, 158, 75, 0.5);
+                cursor: pointer;
+            }
+
+            label {
+                display: inline-flex;
+                align-items: center;
+                margin-right: 20px;
+                font-weight: bold;
+                color: #333;
+                font-family: 'Source Sans 3', sans-serif;
+            }
+
+
             .formulario {
                 flex: 1;
                 min-width: 300px;
@@ -212,21 +254,31 @@
                 border-radius: 10px;
                 box-shadow: 0 2px 6px rgba(0,0,0,0.2);
             }
+            
+            .formulario h2 {
+    background-color: #b0c78f;
+    color: white;              /* texto blanco */
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 
 
         </style>
     </head>
     <body>
         <header th:replace="~{layout/plantilla :: header}" >
-            
+
         </header>
 
         <div class="lineas-decorativas" th:replace="~{layout/plantilla :: lineas-decorativas}" >
-            
+
         </div>
 
         <nav th:replace="~{layout/plantilla :: nav}" >
-           
+
         </nav>
 
 
@@ -234,7 +286,7 @@
             <div class="formulario">
                 <h2>Solicitud de Cotización</h2>
                 <form method="POST" th:action="@{/cotizacionReposteria/guardar}"  th:object="${cotizacionReposteria}" enctype="multipart/form-data">
-                    <h3>Tipo Reposteria</h3>
+                    <h3>Tipo Repostería</h3>
                     <label><input type="radio" name="tipoReposteria" value="Dulce" required>DULCE</label>
                     <label><input type="radio" name="tipoReposteria" value="Salada">SALADA</label>
                     <label><input type="radio" name="tipoReposteria" value="Mixta"> MIXTA</label>
@@ -248,12 +300,12 @@
             </div>
 
             <div class="imagen-cotizacion">
-                <img src="../../static/img/ChatGPT Image 12 jun 2025, 02_49_08 p.m..png" alt="Imagen cotización"/>
+                <img th:src="@{/img/Cotizaciones.png}" alt="Cotizaciones"/>
             </div>
         </section>
 
         <footer th:replace="~{layout/plantilla :: footer}" >
-            
+
         </footer>
     </body>
 </html>
