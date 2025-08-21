@@ -132,7 +132,12 @@
     <!-- Formulario de modificación -->
     <div class="formulario-cotizacion">
         <h2>ELIGE Y PERSONALIZA TU QUEQUE</h2>
-        <form th:action="@{/cotizacionPastel/guardar}" method="post" th:object="${cotizacionPastel}" enctype="multipart/form-data">
+        <form method="POST"
+      th:action="@{/cotizacionPastel/guardar}"
+      th:object="${cotizacionPastel}"
+      enctype="multipart/form-data"
+      onsubmit="return mostrarAlerta()">
+
             <input type="hidden" th:field="*{id}"/>
             <input type="hidden" th:field="*{usuario.idUsuario}"/>
 
@@ -161,5 +166,13 @@
 
         <!-- Pie de página -->
         <footer th:replace="~{layout/plantilla :: footer}"/>
+        
+        <script>
+    function mostrarAlerta() {
+        alert("¡Cotización enviada!");
+        return true; // Permite el envío del formulario después de mostrar el mensaje
+    }
+</script>
+
 </body>
 </html>

@@ -87,22 +87,8 @@
                 padding: 20px;
                 text-align: center;
             }
-            .mapas {
-                display: flex;
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 30px;
-            }
-            .mapas img {
-                width: 200px;
-                height: auto;
 
-            }
-            .mapas iframe {
-                border: 1px solid #ccc;
-                border-radius: 10px;
-                box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-            }
+
             .info-contacto {
                 margin-top: 30px;
                 font-size: 16px;
@@ -127,19 +113,7 @@
                 justify-content: center;
                 gap: 30px;
             }
-            .iconos-mapas a img {
-                width: 60px;
-                height: 60px;
-            }
-            .como-llegar {
-                text-align: center;
-                font-family: 'Source Sans 3', sans-serif;
-                font-weight: 300;
-                font-size: 20px;
-                color: #ee7171;
-                margin-top: 50px;
-                margin-bottom: 5px;
-            }
+
             footer {
                 background-color: #c5d5a5;
                 padding: 30px 20px;
@@ -212,11 +186,6 @@
                 border-radius: 10px;
                 box-shadow: 0 2px 6px rgba(0,0,0,0.2);
             }
-
-
-
-
-            /* ... estilos previos ... */
 
 
             form h2 {
@@ -296,7 +265,7 @@
 
         <section class="form-cotizacion">
             <form method="POST" th:action="@{/cotizacionPastel/guardar}" th:object="${cotizacionPastel}" enctype="multipart/form-data">
-                <h2>Solicitud de Cotización</h2>
+                <h2>Solicitud de Cotización Pasteles</h2>
 
                 <div class="formulario-tres-columnas">
                     <!-- Columna 1 -->
@@ -342,18 +311,35 @@
                         <label><input type="checkbox" name="extras" value="ARANDANOS"> ARANDANOS</label>
                         <label><input type="checkbox" name="extras" value="HIGOS"> HIGOS</label>
                         <label><input type="checkbox" name="extras" value="CIRUELAS"> CIRUELAS</label>
+                        <label><input type="checkbox" name="extras" value="CIRUELAS"> MARSMALLOWS</label>
+                        <label><input type="checkbox" name="extras" value="CIRUELAS"> CHOCOLATE</label>
+                        <label><input type="checkbox" name="extras" value="CIRUELAS"> FRUTAS MIXTAS</label>
                         <label><input type="checkbox" name="extras" value="OTROS"> OTROS</label>
                     </div>
-                </div>
 
-                <div style="text-align:center; margin-top: 30px;">
-                    <button type="submit" class="btn-cotizar">Cotizar</button>
-                </div>
-            </form>
-        </section>
+                    <div style="text-align:center; margin-top: 30px;">
+                        <div style="margin-top: 1px; margin-bottom: 40px; text-align: center;">
+                            <h3 style="color: #7a9e4b; font-family: 'Jacques Francois', serif;">Imagen de Referencia (opcional)</h3>
+                            <input type="file" name="imagenReferencia" accept="image/*"
+                                   style="border: 1px solid #7a9e4b; border-radius: 8px; padding: 14px 18px; background-color: #f9f9f9; width: 400px;">
+    </div>
+                        <button type="submit" class="btn-cotizar">Cotizar</button>
+                    </div>
 
-        <footer th:replace="~{layout/plantilla :: footer}" >
+            </form>     
+        </div>
+    </section>
 
-        </footer>
-    </body>
+    <footer th:replace="~{layout/plantilla :: footer}" >
+    </footer>
+        
+        <script>
+    function mostrarAlerta() {
+        alert("¡Cotización enviada!");
+        return true;
+    }
+</script>
+
+
+</body>
 </html>

@@ -15,6 +15,7 @@ import java.util.List;
 import lombok.Data;
 import com.proyectoG5.domain.Usuario;
 
+
 @Data
 @Entity
 @Table(name="cotizacion_pastel")

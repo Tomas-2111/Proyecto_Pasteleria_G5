@@ -19,11 +19,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam; 
-import org.springframework.web.multipart.MultipartFile;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ui.Model;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import java.util.Arrays;
+import org.springframework.web.multipart.MultipartFile;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Controller
 @Slf4j
@@ -59,14 +60,17 @@ public class CotizacionPastelController {
     
     
     
-    @PostMapping("/guardar")
-    public String guardarCotizacionPastel(
-            CotizacionPastel cotizacionPastel,
-           // @RequestParam('imagenDiseno') MultipartFile imagenDiseno,
-            Model model){
+   @PostMapping("/guardar")
+public String guardarCotizacionPastel(
+        CotizacionPastel cotizacionPastel,
+        @RequestParam("imagenReferencia") MultipartFile imagenDiseno,
+        Model model) {
+
         
         StringBuilder descripcionBuilder = new StringBuilder();
         
+          
+
         if(cotizacionPastel.getTamano()!=null){
             descripcionBuilder.append("Tamaño: ").append(cotizacionPastel.getTamano()).append(" - ");
             
@@ -90,18 +94,30 @@ public class CotizacionPastelController {
         }
         
         
-        if(cotizacionPastel.getId()==null)//Si es create o modificar
-        {
-            cotizacionPastel.setDescripcion(descripcionBuilder.toString().trim());
-            cotizacionPastel.setUrl_imagen(null);
-            cotizacionPastel.setEstado("Pendiente Revision");
-            //usuario.setIdUsuario((long) 2);
-            //cotizacionPastel.setUsuario(usuario);
+     // Guardar imagen si se subió (para cuando el cliente sube una imagen en cotizacion de pasteles)
+    try {
+        if (!imagenDiseno.isEmpty()) {
+            String carpeta = "src/main/resources/static/images/cotizaciones/";
+            String nombreArchivo = imagenDiseno.getOriginalFilename();
+            Path rutaArchivo = Paths.get(carpeta + nombreArchivo);
+            Path createDirectories = Files.createDirectories(rutaArchivo.getParent());
+            //Files.createDirectories(rutaArchivo.getParent());
+            imagenDiseno.transferTo(rutaArchivo.toFile());
+            cotizacionPastel.setUrl_imagen("/images/cotizaciones/" + nombreArchivo);
         }
-        cotizacionPastelService.save(cotizacionPastel);
-        return "redirect:/index";
-        
+    } catch (Exception e) {
+        e.printStackTrace();
+        cotizacionPastel.setUrl_imagen(null);
     }
+
+    if (cotizacionPastel.getId() == null) {
+        cotizacionPastel.setDescripcion(descripcionBuilder.toString().trim());
+        cotizacionPastel.setEstado("Pendiente Revision");
+    }
+
+    cotizacionPastelService.save(cotizacionPastel);
+    return "redirect:/index";
+}
     
     @GetMapping("/modificar/{id}")
     public String cotizacionPastelModificar( CotizacionPastel cotizacionPastel, Model model) {
