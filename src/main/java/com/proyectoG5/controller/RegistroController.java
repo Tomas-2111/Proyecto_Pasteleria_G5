@@ -50,7 +50,7 @@ public class RegistroController {
             );
             return "redirect:/registro/registrar";
         }
-        return "/login";
+        return "redirect:/login";
     }
 
 }
