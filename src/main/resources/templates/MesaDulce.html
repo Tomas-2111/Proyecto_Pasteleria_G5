@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <title>Que Arte Pastelería - Cotizaciones</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fuentes y estilos -->
+    <link href="https://fonts.googleapis.com/css2?family=Rochester&family=Jacques+Francois&family=Source+Sans+3:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rochester&family=Jacques+Francois&family=Source+Sans+3:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #c5d5a5;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #a3d9a5;
+            position: relative;
+        }
+            .lineas-decorativas {
+                width: 100%;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+            .linea {
+                height: 10px;
+                width: 100%;
+            }
+        .icono {
+            width: 120px;
+            height: auto;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        h1 {
+            font-family: 'Rochester', cursive;
+            font-size: 50px;
+            margin: 0;
+            display: inline-block;
+            vertical-align: middle;
+            color: #333;
+        }
+        .subtitulo {
+            font-family: 'Jacques Francois', serif;
+            font-size: 18px;
+            color: #444;
+            margin-top: 5px;
+        }
+        .iconos-header {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+        }
+        .iconos-header a {
+            color: #333;
+            margin-left: 15px;
+            font-size: 18px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .iconos-header a:hover {
+            color: #7a9e4b;
+        }
+        nav {
+            background-color: #ffffff;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            background-color: #c5d5a5;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            font-weight: bold;
+            border: 1px solid #a0dca2;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #d3f9d8;
+        }
+        .contenido-historia {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .contenido-historia h2 {
+            font-family: 'Jacques Francois', serif;
+            font-size: 35px;
+            font-weight: bold;
+            color: #ffffff;
+            text-align: center;
+            background-color: #899967;
+            width: 650px;
+            height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 30px;
+            margin: 0 auto 40px auto;
+        }
+        .pasteles {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+        .pastel {
+            width: 280px;
+            background: #fff;
+            border-radius: 15px;
+            padding: 15px;
+            border: 2px solid #f4b5c3;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .pastel img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 3px solid #f4b5c3;
+            margin-bottom: 15px;
+        }
+        .pastel h3 {
+            font-family: 'Source Sans 3', sans-serif;
+            font-weight: 600;
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .pastel p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .pastel a {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #c5d5a5;
+            color: #333;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            border: 1px solid #a0dca2;
+            transition: background-color 0.3s ease;
+        }
+        .pastel a:hover {
+            background-color: #d3f9d8;
+        }
+        footer {
+            background-color: #c5d5a5;
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid #ccc;
+            margin-top: 40px;
+        }
+        .redes-sociales a {
+            color: #444;
+            font-size: 24px;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .politicas {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <header th:replace="~{layout/plantilla :: header}" ></header>
+
+    <div class="lineas-decorativas" th:replace="~{layout/plantilla :: lineas-decorativas}" ></div>
+
+    <nav th:replace="~{layout/plantilla :: nav}" ></nav>
+
+    <section class="contenido-historia">
+        <h2>Nuestras Mesas Dulces</h2>
+        <div class="pasteles">
+            <div class="pastel">
+                <img src="/img/481975877_1073647608111761_7608321678710259865_n.jpg" alt="Mesa dulce de Tiramisú">
+                <h3>Mesa Dulce de Tiramisú </h3>
+                <p>Una mesa irresistible con brownies, cupcake y pastel de chocolate, ideal para los amantes del cacao.</p>
+                <a href="/cotizacionPastel/nueva">Pedir Cotización</a>
+            </div>
+            <div class="pastel">
+                <img src="/img/492071004_1118770556932799_3065790187099751514_n.jpg" alt="Mesa dulce de fiesta">
+                <h3>Mesa Dulce Fiesta</h3>
+                <p>Decorada con colores vibrantes, incluye mini queques, cake pops, galletas decoradas y dulces variados para toda ocasión.</p>
+                <a href="/cotizacionPastel/nueva">Pedir Cotización</a>
+            </div>
+            <div class="pastel">
+                <img src="/img/504838540_1155762109900310_1978360580293749587_n.jpg" alt="Mesa dulce frutal">
+                <h3>Mesa Dulce Frutal</h3>
+                <p>Una opción fresca y elegante con postres artesanales y frutas naturales, perfecta para bodas y eventos al aire libre.</p>
+                <a href="/cotizacionPastel/nueva">Pedir Cotización</a>
+            </div>
+        </div>
+    </section>
+
+
+    <footer th:replace="~{layout/plantilla :: footer}" />
+</body>
+</html>
