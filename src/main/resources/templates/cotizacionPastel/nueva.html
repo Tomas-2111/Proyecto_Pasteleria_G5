@@ -213,152 +213,147 @@
                 box-shadow: 0 2px 6px rgba(0,0,0,0.2);
             }
 
-            
-            
-            
-/* ... estilos previos ... */
-
-
-form h2 {
-    background-color: #b0c78f;
-    color: white;
-    padding: 10px 200px;
-    border-radius: 8px;
-    text-align: center;
-    margin-bottom: 20px;
-    font-family: 'Jacques Francois', serif;
-}
-
-form h3 {
-    color: #7a9e4b;
-    font-family: 'Jacques Francois', serif;
-    margin-bottom: 8px;
-}
-
-form label {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 15px;
-    color: #333;
-}
-
-form input[type="radio"],
-form input[type="checkbox"] {
-    margin-right: 10px;
-    width: 18px;
-    height: 18px;
-    border: 2px solid #7a9e4b;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: box-shadow 0.2s ease;
-}
-
-form input[type="radio"]:hover,
-form input[type="checkbox"]:hover {
-    box-shadow: 0 0 5px #a3d9a5;
-}
 
 
 
+            /* ... estilos previos ... */
 
 
+            form h2 {
+                background-color: #b0c78f;
+                color: white;
+                padding: 10px 200px;
+                border-radius: 8px;
+                text-align: center;
+                margin-bottom: 20px;
+                font-family: 'Jacques Francois', serif;
+            }
 
-.formulario-tres-columnas {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    max-width: 1500px;
-    margin: 0 auto;
-}
+            form h3 {
+                color: #7a9e4b;
+                font-family: 'Jacques Francois', serif;
+                margin-bottom: 8px;
+            }
 
-.columna {
-    flex: 1 1 100px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
+            form label {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+                font-family: 'Source Sans 3', sans-serif;
+                font-size: 15px;
+                color: #333;
+            }
+
+            form input[type="radio"],
+            form input[type="checkbox"] {
+                margin-right: 10px;
+                width: 18px;
+                height: 18px;
+                border: 2px solid #7a9e4b;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: box-shadow 0.2s ease;
+            }
+
+            form input[type="radio"]:hover,
+            form input[type="checkbox"]:hover {
+                box-shadow: 0 0 5px #a3d9a5;
+            }
+
+
+            .formulario-tres-columnas {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 30px;
+                max-width: 1500px;
+                margin: 0 auto;
+            }
+
+            .columna {
+                flex: 1 1 100px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
 
 
         </style>
     </head>
     <body>
         <header th:replace="~{layout/plantilla :: header}" >
-            
+
         </header>
 
         <div class="lineas-decorativas" th:replace="~{layout/plantilla :: lineas-decorativas}" >
-            
+
         </div>
 
         <nav th:replace="~{layout/plantilla :: nav}" >
-           
+
         </nav>
 
 
         <section class="form-cotizacion">
-    <form method="POST" th:action="@{/cotizacionPastel/guardar}" th:object="${cotizacionPastel}" enctype="multipart/form-data">
-        <h2>Solicitud de Cotización</h2>
+            <form method="POST" th:action="@{/cotizacionPastel/guardar}" th:object="${cotizacionPastel}" enctype="multipart/form-data">
+                <h2>Solicitud de Cotización</h2>
 
-        <div class="formulario-tres-columnas">
-            <!-- Columna 1 -->
-            <div class="columna">
-                <h3>Tamaño del Pastel</h3>
-                <label><input type="radio" name="tamano" value="GRANDE 40 PORCIONES" required> GRANDE 40 PORCIONES</label>
-                <label><input type="radio" name="tamano" value="MEDIANO 20 PORCIONES"> MEDIANO 20 PORCIONES</label>
-                <label><input type="radio" name="tamano" value="PEQUEÑO 10 PORCIONES"> PEQUEÑO 10 PORCIONES</label>
+                <div class="formulario-tres-columnas">
+                    <!-- Columna 1 -->
+                    <div class="columna">
+                        <h3>Tamaño del Pastel</h3>
+                        <label><input type="radio" name="tamano" value="GRANDE 40 PORCIONES" required> GRANDE 40 PORCIONES</label>
+                        <label><input type="radio" name="tamano" value="MEDIANO 20 PORCIONES"> MEDIANO 20 PORCIONES</label>
+                        <label><input type="radio" name="tamano" value="PEQUEÑO 10 PORCIONES"> PEQUEÑO 10 PORCIONES</label>
 
-                <h3>Sabor del Pastel</h3>
-                <label><input type="radio" name="sabor" value="CHIA - LIMON" required> CHIA - LIMON</label>
-                <label><input type="radio" name="sabor" value="VAINILLA - NARANJA"> VAINILLA - NARANJA</label>
-                <label><input type="radio" name="sabor" value="CHOCOLATE"> CHOCOLATE</label>
-                <label><input type="radio" name="sabor" value="REDVELVET"> REDVELVET</label>
-                <label><input type="radio" name="sabor" value="HIGOS"> HIGOS</label>
-                <label><input type="radio" name="sabor" value="COCO"> COCO</label>
-                <label><input type="radio" name="sabor" value="MARACUYA"> MARACUYA</label>
-            </div>
+                        <h3>Sabor del Pastel</h3>
+                        <label><input type="radio" name="sabor" value="CHIA - LIMON" required> CHIA - LIMON</label>
+                        <label><input type="radio" name="sabor" value="VAINILLA - NARANJA"> VAINILLA - NARANJA</label>
+                        <label><input type="radio" name="sabor" value="CHOCOLATE"> CHOCOLATE</label>
+                        <label><input type="radio" name="sabor" value="REDVELVET"> REDVELVET</label>
+                        <label><input type="radio" name="sabor" value="HIGOS"> HIGOS</label>
+                        <label><input type="radio" name="sabor" value="COCO"> COCO</label>
+                        <label><input type="radio" name="sabor" value="MARACUYA"> MARACUYA</label>
+                    </div>
 
-            <!-- Columna 2 -->
-            <div class="columna">
-                <h3>Relleno del pastel</h3>
-                <label><input type="radio" name="relleno" value="LIMON" required> LIMON</label>
-                <label><input type="radio" name="relleno" value="NUTELLA"> NUTELLA</label>
-                <label><input type="radio" name="relleno" value="CHOCOLATE"> CHOCOLATE</label>
-                <label><input type="radio" name="relleno" value="FRESAS"> FRESAS</label>
-                <label><input type="radio" name="relleno" value="HIGOS"> HIGOS</label>
-                <label><input type="radio" name="relleno" value="COCO"> COCO</label>
-                <label><input type="radio" name="relleno" value="DULCE DE LECHE"> DULCE DE LECHE</label>
+                    <!-- Columna 2 -->
+                    <div class="columna">
+                        <h3>Tipo de cubierta</h3>
+                        <label><input type="radio" name="cubierta" value="PASTA AUSTRALIANA" required> PASTA AUSTRALIANA</label>
+                        <label><input type="radio" name="cubierta" value="LUSTRE"> LUSTRE</label>
+                        <label><input type="radio" name="cubierta" value="FRUTAS O SEMILLAS"> FRUTAS O SEMILLAS</label>
 
-                <h3>Tipo de cubierta del pastel</h3>
-                <label><input type="radio" name="cubierta" value="PASTA AUSTRALIANA" required> PASTA AUSTRALIANA</label>
-                <label><input type="radio" name="cubierta" value="LUSTRE"> LUSTRE</label>
-                <label><input type="radio" name="cubierta" value="FRUTAS O SEMILLAS"> FRUTAS O SEMILLAS</label>
-            </div>
+                        <h3>Relleno del pastel</h3>
+                        <label><input type="radio" name="relleno" value="LIMON" required> LIMON</label>
+                        <label><input type="radio" name="relleno" value="NUTELLA"> NUTELLA</label>
+                        <label><input type="radio" name="relleno" value="CHOCOLATE"> CHOCOLATE</label>
+                        <label><input type="radio" name="relleno" value="FRESAS"> FRESAS</label>
+                        <label><input type="radio" name="relleno" value="HIGOS"> HIGOS</label>
+                        <label><input type="radio" name="relleno" value="COCO"> COCO</label>
+                        <label><input type="radio" name="relleno" value="DULCE DE LECHE"> DULCE DE LECHE</label></div>
 
-            <!-- Columna 3 -->
-            <div class="columna">
-                <h3>Ingredientes Extras</h3>
-                <label><input type="checkbox" name="extras" value="ALMENDRAS"> ALMENDRAS</label>
-                <label><input type="checkbox" name="extras" value="NUECES"> NUECES</label>
-                <label><input type="checkbox" name="extras" value="FRESAS"> FRESAS</label>
-                <label><input type="checkbox" name="extras" value="MELOCOTONES"> MELOCOTONES</label>
-                <label><input type="checkbox" name="extras" value="ARANDANOS"> ARANDANOS</label>
-                <label><input type="checkbox" name="extras" value="HIGOS"> HIGOS</label>
-                <label><input type="checkbox" name="extras" value="CIRUELAS"> CIRUELAS</label>
-                <label><input type="checkbox" name="extras" value="OTROS"> OTROS</label>
-            </div>
-        </div>
+                    <!-- Columna 3 -->
+                    <div class="columna">
+                        <h3>Ingredientes Extras</h3>
+                        <label><input type="checkbox" name="extras" value="ALMENDRAS"> ALMENDRAS</label>
+                        <label><input type="checkbox" name="extras" value="NUECES"> NUECES</label>
+                        <label><input type="checkbox" name="extras" value="FRESAS"> FRESAS</label>
+                        <label><input type="checkbox" name="extras" value="MELOCOTONES"> MELOCOTONES</label>
+                        <label><input type="checkbox" name="extras" value="ARANDANOS"> ARANDANOS</label>
+                        <label><input type="checkbox" name="extras" value="HIGOS"> HIGOS</label>
+                        <label><input type="checkbox" name="extras" value="CIRUELAS"> CIRUELAS</label>
+                        <label><input type="checkbox" name="extras" value="OTROS"> OTROS</label>
+                    </div>
+                </div>
 
-        <div style="text-align:center; margin-top: 30px;">
-            <button type="submit" class="btn-cotizar">Cotizar</button>
-        </div>
-    </form>
-</section>
+                <div style="text-align:center; margin-top: 30px;">
+                    <button type="submit" class="btn-cotizar">Cotizar</button>
+                </div>
+            </form>
+        </section>
 
         <footer th:replace="~{layout/plantilla :: footer}" >
-            
+
         </footer>
     </body>
 </html>
