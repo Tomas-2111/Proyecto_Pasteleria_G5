@@ -1,71 +1,185 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
-    <head xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        
-        <!-- 3 Sección principal para mostrar la informaccion de la entidad categoria -->
-        <section th:fragment="listadoCotizaciones" >
-            <div class="container">
-                <div class="row">
-                   
-                    <div class="col-md-9">
-                        <button class="btn btn-primary" ><a class="btn btn-primary" th:href="@{/cotizacionPastel/listado}">Cotizaciones Pastel</a></button>
-                        <button class="btn btn-primary" ><a class="btn btn-primary" th:href="@{/cotizacionReposteria/listado}">Cotizaciones Reposteria</a></button>
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Listado test</h4>
-                            </div>
-                            <div th:if="${cotizacionesPastel != null and !cotizacionesPastel.empty}">
-                                
-                                <table class="table table-striped table-hover">
-                                    <thead class="table-dark">
-                                        <tr><th>#</th>
-                                            <th>test1</th>
-                                            <th>tst2</th>
+<head>
+    <title>Que Arte Pastelería - Cotizaciones</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-                                    </thead>
-                                    <tbody>
-                                        <tr th:each="cotizacionPastel, contador : ${cotizacionesPastel}">
-                                            <td>[[${contador.count}]]</td>
-                                            <td>[[${cotizacionPastel.descripcion}]]</td>
-                                            <td>Cotizacion Pastel</td>
-                                            
-                                            <td><a th:href="@{/cotizacionPastel/modificar/}+${cotizacionPastel.id}"
-                                                   class="btn btn-success">
-                                                    Actualizar</a></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="text-center p-2" th:if="${cotizacionesPastel == null or cotizacionesPastel.empty}">
-                                <span>[[#{lista.vacia}]]</span>
-                            </div>
+    <!-- Fuentes y estilos -->
+    <link href="https://fonts.googleapis.com/css2?family=Rochester&family=Jacques+Francois&family=Source+Sans+3:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #c5d5a5;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #a3d9a5;
+            position: relative;
+        }
+        .icono {
+            width: 120px;
+            height: auto;
+            vertical-align: middle;
+            margin-right: 10px;
+        }
+        h1 {
+            font-family: 'Rochester', cursive;
+            font-size: 50px;
+            margin: 0;
+            display: inline-block;
+            vertical-align: middle;
+            color: #333;
+        }
+        .subtitulo {
+            font-family: 'Jacques Francois', serif;
+            font-size: 18px;
+            color: #444;
+            margin-top: 5px;
+        }
+        .iconos-header {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+        }
+        .iconos-header a {
+            color: #333;
+            margin-left: 15px;
+            font-size: 18px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .iconos-header a:hover {
+            color: #7a9e4b;
+        }
+        nav {
+            background-color: #ffffff;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            background-color: #c5d5a5;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            font-weight: bold;
+            border: 1px solid #a0dca2;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #d3f9d8;
+        }
+        .lineas-decorativas {
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .linea {
+            height: 10px;
+            width: 100%;
+        }
+        footer {
+            background-color: #c5d5a5;
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid #ccc;
+        }
+        .redes-sociales a {
+            color: #444;
+            font-size: 24px;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        .politicas {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <div class="lineas-decorativas" th:replace="~{layout/plantilla :: lineas-decorativas}"/>
+
+
+        <nav>
+            <a href="/">Inicio</a>
+            <a href="/cotizaciones">Cotizaciones</a>
+            <a th:href="@{/cotizacionPastel/listado}">Cotizaciones Pastel</a>
+            <a th:href="@{/cotizacionReposteria/listado}">Cotizaciones Repostería</a>
+        </nav>
+
+    <!-- Sección principal listado -->
+    <section th:fragment="listadoCotizacionesPastel">
+        <div class="container mt-4">
+            <div class="row">
+                <!-- Columna principal -->
+                <div class="col-md-9">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-dark text-white">
+                            <h4 class="mb-0">Listado de Cotizaciones de Pasteles</h4>
+                        </div>
+                        <div th:if="${cotizacionesPastel != null and !cotizacionesPastel.empty}">
+                            <table class="table table-striped table-hover mb-0">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Descripción</th>
+                                        <th>Tipo</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="cotizacionPastel, contador : ${cotizacionesPastel}">
+                                        <td>[[${contador.count}]]</td>
+                                        <td>[[${cotizacionPastel.descripcion}]]</td>
+                                        <td>Cotización Pastel</td>
+                                        <td>
+                                            <a th:href="@{/cotizacionPastel/modificar/}+${cotizacionPastel.id}"
+                                               class="btn btn-success btn-sm">
+                                                Actualizar
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-center p-3" th:if="${cotizacionesPastel == null or cotizacionesPastel.empty}">
+                            <span class="text-muted">[[#{lista.vacia}]]</span>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="card text-center bg-success text-white mb-3">
-                            <div class="card-body">
-                                <h3>total</h3>
-                                <h4 class="fs-2"><i class="fas fa-users"></i>[[${totalCotizacionesPastel}]]</h4>
-                            </div>
-                        </div>
-                    </div>
-                    
                 </div>
-               
+
+                <!-- Columna lateral con total -->
+                <div class="col-md-3">
+                    <div class="card text-center bg-success text-white mb-3 shadow-sm">
+                        <div class="card-body">
+                            <h3>Total</h3>
+                            <h4 class="fs-2">
+                                <i class="fas fa-users"></i>
+                                [[${totalCotizacionesPastel}]]
+                            </h4>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
-       
-   
-    </body>
+        </div>
+    </section>
+
+        <!-- Pie de página -->
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+</body>
 </html>
