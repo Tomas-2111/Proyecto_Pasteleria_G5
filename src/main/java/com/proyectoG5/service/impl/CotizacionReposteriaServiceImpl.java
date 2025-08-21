@@ -92,7 +92,11 @@ public class CotizacionReposteriaServiceImpl implements CotizacionReposteriaServ
         if (usuario == null) {
             return;
         }
-        cotizacionReposteria.setUsuario(usuario);
+        
+        if(cotizacionReposteria.getId()==null){
+           cotizacionReposteria.setUsuario(usuario);
+        }
+       
         cotizacionReposteriaDao.save(cotizacionReposteria);
     }
     

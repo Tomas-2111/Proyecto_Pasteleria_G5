@@ -94,7 +94,10 @@ public class CotizacionPastelServiceImpl implements CotizacionPastelService{
         if (usuario == null) {
             return;
         }
-        cotizacionPastel.setUsuario(usuario);
+        if(cotizacionPastel.getId()==null){
+           cotizacionPastel.setUsuario(usuario);
+        }
+     
         cotizacionPastelDao.save(cotizacionPastel);
     }
     
