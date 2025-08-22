@@ -138,6 +138,7 @@
                                         <th>#</th>
                                         <th>Descripción</th>
                                         <th>Tipo</th>
+                                        <th>Estado</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -146,6 +147,7 @@
                                         <td>[[${contador.count}]]</td>
                                         <td>[[${cotizacionPastel.descripcion}]]</td>
                                         <td>Cotización Pastel</td>
+                                        <td>[[${cotizacionPastel.estado}]]</td>
                                         <td>
                                             <a th:href="@{/cotizacionPastel/modificar/}+${cotizacionPastel.id}"
                                                class="btn btn-success btn-sm">

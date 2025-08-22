@@ -273,12 +273,11 @@
 
         <section class="form-cotizacion">
             <form method="POST" 
-                  th:action="@{/cotizacionPastel/guardar}" 
-                  th:object="${cotizacionPastel}" 
+                  th:action="@{/cotizacionReposteria/guardar}"  th:object="${cotizacionReposteria}"
                   enctype="multipart/form-data" 
-                  onsubmit="return mostrarAlerta()">
+                  >
                 <h2>Solicitud de Cotización de Repostería</h2>
-                <form method="POST" th:action="@{/cotizacionReposteria/guardar}"  th:object="${cotizacionReposteria}" enctype="multipart/form-data">
+              
                     <h3>Tipo Repostería</h3>
                     <label><input type="radio" name="tipoReposteria" value="Dulce" required>DULCE</label>
                     <label><input type="radio" name="tipoReposteria" value="Salada">SALADA</label>

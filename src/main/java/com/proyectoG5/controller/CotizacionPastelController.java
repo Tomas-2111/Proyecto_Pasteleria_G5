@@ -94,25 +94,26 @@ public String guardarCotizacionPastel(
         }
         
         
-     // Guardar imagen si se subió (para cuando el cliente sube una imagen en cotizacion de pasteles)
-    try {
-        if (!imagenDiseno.isEmpty()) {
-            String carpeta = "src/main/resources/static/images/cotizaciones/";
-            String nombreArchivo = imagenDiseno.getOriginalFilename();
-            Path rutaArchivo = Paths.get(carpeta + nombreArchivo);
-            Path createDirectories = Files.createDirectories(rutaArchivo.getParent());
-            //Files.createDirectories(rutaArchivo.getParent());
-            imagenDiseno.transferTo(rutaArchivo.toFile());
-            cotizacionPastel.setUrl_imagen("/images/cotizaciones/" + nombreArchivo);
-        }
-    } catch (Exception e) {
-        e.printStackTrace();
-        cotizacionPastel.setUrl_imagen(null);
-    }
+   
 
     if (cotizacionPastel.getId() == null) {
         cotizacionPastel.setDescripcion(descripcionBuilder.toString().trim());
         cotizacionPastel.setEstado("Pendiente Revision");
+        // Guardar imagen si se subió (para cuando el cliente sube una imagen en cotizacion de pasteles)
+        try {
+            if (!imagenDiseno.isEmpty()) {
+                String carpeta = "src/main/resources/static/images/cotizaciones/";
+                String nombreArchivo = imagenDiseno.getOriginalFilename();
+                Path rutaArchivo = Paths.get(carpeta + nombreArchivo);
+                Path createDirectories = Files.createDirectories(rutaArchivo.getParent());
+                //Files.createDirectories(rutaArchivo.getParent());
+                imagenDiseno.transferTo(rutaArchivo.toFile());
+                cotizacionPastel.setUrl_imagen("/images/cotizaciones/" + nombreArchivo);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            cotizacionPastel.setUrl_imagen(null);
+        }
     }
 
     cotizacionPastelService.save(cotizacionPastel);
